@@ -1,0 +1,81 @@
+name: Cut Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release, e.g. v0.6.147. Leave empty to auto-increment the latest vMAJOR.MINOR.PATCH tag.'
+        required: false
+        default: ''
+      target:
+        description: 'Branch or commit to release from'
+        required: false
+        default: 'develop'
+
+permissions:
+  contents: write
+
+jobs:
+  cut-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target }}
+          fetch-depth: 0
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            VERSION="${{ inputs.version }}"
+            if ! [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "ERROR: version must match vMAJOR.MINOR.PATCH (got '$VERSION')" >&2
+              exit 1
+            fi
+          else
+            LATEST=$(git tag -l 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n1)
+            if [ -z "$LATEST" ]; then
+              echo "ERROR: no existing vMAJOR.MINOR.PATCH tag found to increment from" >&2
+              exit 1
+            fi
+            MAJOR=$(echo "$LATEST" | cut -d. -f1)
+            MINOR=$(echo "$LATEST" | cut -d. -f2)
+            PATCH=$(echo "$LATEST" | cut -d. -f3)
+            VERSION="${MAJOR}.${MINOR}.$((PATCH + 1))"
+          fi
+
+          if git rev-parse "refs/tags/$VERSION" >/dev/null 2>&1; then
+            echo "ERROR: tag $VERSION already exists" >&2
+            exit 1
+          fi
+          if git ls-remote --exit-code --heads origin "refs/heads/$VERSION" >/dev/null 2>&1; then
+            echo "ERROR: branch $VERSION already exists" >&2
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create release branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git push origin "HEAD:refs/heads/${{ steps.version.outputs.version }}"
+
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.version.outputs.version }}" \
+            --repo "${{ github.repository }}" \
+            --target "${{ steps.version.outputs.version }}" \
+            --title "${{ steps.version.outputs.version }}" \
+            --generate-notes
+
+      - name: Summary
+        run: |
+          {
+            echo "Cut release **${{ steps.version.outputs.version }}** from \`${{ inputs.target }}\`"
+            echo "- Branch: https://github.com/${{ github.repository }}/tree/${{ steps.version.outputs.version }}"
+            echo "- Release: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.version }}"
+          } >> "$GITHUB_STEP_SUMMARY"
