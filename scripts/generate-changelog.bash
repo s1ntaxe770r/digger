@@ -11,6 +11,7 @@ set -euo pipefail
 REPO="${REPO:-diggerhq/digger}"
 LIMIT="${1:-30}"
 OUT="${OUT:-CHANGELOG.md}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 {
   echo "# Changelog"
@@ -19,12 +20,16 @@ OUT="${OUT:-CHANGELOG.md}"
   echo
 } > "$OUT"
 
-gh release list --repo "$REPO" --limit 1000 --json tagName,isDraft,isPrerelease \
+all_tags_desc=$(gh release list --repo "$REPO" --limit 1000 --json tagName,isDraft,isPrerelease \
   -q '.[] | select(.isDraft==false and .isPrerelease==false) | .tagName' \
   | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
-  | sort -rV \
+  | sort -rV)
+
+printf '%s\n' "$all_tags_desc" \
   | head -n "$LIMIT" \
   | while read -r tag; do
+      prev_tag=$(printf '%s\n' "$all_tags_desc" | awk -v t="$tag" 'found{print; exit} $0==t{found=1}')
+
       gh release view "$tag" --repo "$REPO" --json tagName,publishedAt,body,url \
         | jq -r '
             "## [" + .tagName + "](" + .url + ") - " + (.publishedAt | split("T")[0]) + "\n\n"
@@ -37,6 +42,11 @@ gh release list --repo "$REPO" --limit 1000 --json tagName,isDraft,isPrerelease 
               )
             + "\n"
           '
+
+      if [ -n "$prev_tag" ]; then
+        "$SCRIPT_DIR/diff-go-deps.bash" "$prev_tag" "$tag"
+        echo
+      fi
     done >> "$OUT"
 
 echo "Wrote $OUT" >&2
