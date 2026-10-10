@@ -1,0 +1,78 @@
+name: Comment latency fixture
+on:
+  workflow_dispatch:
+    inputs:
+      spec:
+        required: true
+      run_name:
+        required: true
+      source_ref:
+        required: true
+      phase:
+        required: true
+run-name: '${{ inputs.run_name }}'
+permissions:
+  contents: read
+  actions: write
+  pull-requests: write
+  issues: read
+  statuses: write
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ fromJSON(inputs.spec).job.branch }}
+      - name: ${{ fromJSON(inputs.spec).job_id }}
+        run: echo 'Local backend profiling job'
+      - uses: actions/checkout@v4
+        with:
+          repository: s1ntaxe770r/digger
+          ref: ${{ inputs.source_ref }}
+          path: .latency-src
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.6'
+          cache-dependency-path: .latency-src/cli/go.sum
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.11.4'
+          terraform_wrapper: false
+      - name: Build measured CLI
+        env:
+          PHASE: ${{ inputs.phase }}
+        working-directory: .latency-src
+        run: |
+          set -euo pipefail
+          case "$PHASE" in
+            before) git apply -R scripts/comment_latency/evidence/renderer.patch ;;
+            after) ;;
+            *) exit 1 ;;
+          esac
+          git rev-parse HEAD
+          git diff -- libs/comment_utils/summary/updater.go
+          cd cli
+          go build -p 2 -o "$RUNNER_TEMP/digger-profile" ./cmd/digger
+          sha256sum "$RUNNER_TEMP/digger-profile"
+      - name: Run instrumented plan
+        env:
+          DIGGER_RUN_SPEC: ${{ inputs.spec }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DIGGER_COMMENT_TIMING: '1'
+          DIGGER_LOG_LEVEL: INFO
+          TELEMETRY: 'false'
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os
+          spec = json.loads(os.environ['DIGGER_RUN_SPEC'])
+          assert spec['job']['commands'] == ['digger plan'], 'Only plans are allowed'
+          for section in ('job', 'backend'):
+              token = spec[section].get('backend_job_token')
+              if token:
+                  print('::add-mask::' + token)
+          PY
+          "$RUNNER_TEMP/digger-profile" default

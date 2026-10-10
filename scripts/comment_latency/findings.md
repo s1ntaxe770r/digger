@@ -2,9 +2,9 @@
 
 The reported post-workflow delay is **not yet verified**. Docker and authenticated GitHub access were restored on 2026-10-10. The local backend now runs with PostgreSQL and passes health/setup/browser checks. A dedicated test GitHub App is now installed on all three fixtures, and its webhook successfully synced them into the local backend. A local renderer optimization is measured below; it does not establish the cause of the reported delay.
 
-## Measured local improvement
+## Synthetic utility benchmark (inactive in the live CLI)
 
-Replaced repeated summary-string concatenation with `strings.Builder`. Exact-output checks preserve aliases, statuses, URLs and the 65,536-byte truncation behavior.
+`summary.GetCommentUpdater` returns `NoopCommentUpdater`, so this utility optimization does not affect the tested live summary path. Replaced repeated summary-string concatenation with `strings.Builder`. Exact-output checks preserve aliases, statuses, URLs and the 65,536-byte truncation behavior.
 
 | Synthetic jobs | Before median | After median | Change |
 |---:|---:|---:|---:|
@@ -18,17 +18,13 @@ Five samples per case and revision, Go 1.27.0 on Apple M3 Pro, instrumentation d
 
 Separate allocation profiles moved the largest allocation share from the updater itself (95.2% before) to job-spec decoding (78.0% after). Compare per-operation benchmark bytes above, not total profile allocations: the faster version executes more iterations. [Before allocation profile](evidence/before.mem.txt) · [after](evidence/after.mem.txt).
 
-| Candidate | Source evidence | Next measurement |
-|---|---|---|
-| Competing summary writers | Backend starts independent realtime updates; CLI also updates after the status response | Correlate writes and detect final-to-stale reversions |
-| Failed edits hidden by successful return | CLI summary updater logs an edit error but returns nil | Match error timing events to unchanged comment state |
-| Repeated database work | Realtime updater fetches batch jobs twice, plus fresh batch | Compare database-stage times on small/heavy fixtures |
-| Client setup/network wait | Backend creates an installation transport and requests its token during client setup | Compare client stage and PATCH durations |
-| Rendering/group scaling | Repeated string concatenation; grouped comments perform per-job lookups and sequential edits | Targeted benchmarks and profile under representative workloads |
+## Live path and candidate
 
-The normal CLI final-summary update is synchronous and precedes CLI exit. Slow synchronous processing alone does not establish a delay after workflow completion. Independent writers, failed edits, different comment types, and deployed versions need separate checks.
+The backend writes summary comments from independent asynchronous updates. The CLI summary provider returns a no-op updater; earlier claims of competing CLI/backend summary writers were incorrect for this path.
 
-Returning the currently suppressed comment error would feed the CLI's failed-job path even when Terraform succeeded. This patch preserves that behavior and exposes the failure in timing data; a behavioral fix needs explicit regression coverage.
+The first three successful workflows had final summary rows before completion, with no reversions. Six backend updates spent a median 447 ms creating an installation client, 1,072 ms editing the summary, and 0.080 ms rendering it. The inclusive update total was 1,532 ms. These nested stages must not be summed.
+
+The candidate reuses GitHub installation transports so the library can retain and refresh its token. Cache keys isolate App, installation and private key; HTTP 401 invalidates the entry for the next client. Repeated baseline and candidate runs are in progress. Polling overlaps remain inconclusive; late observations are excluded from delay estimates.
 
 ## Delivered
 
@@ -48,10 +44,10 @@ Returning the currently suppressed comment error would feed the CLI's failed-job
 ## Outstanding
 
 - GitHub integration tests with test App credentials configured.
-- Existing PR/run/comment mapping. Confirmed management repos: `s1ntaxe770r/digger-small-management-repo` and `s1ntaxe770r/digger-heavy-management-repo`.
-- Repeated baseline fixture runs with the instrumented CLI. Native startup and installation-webhook routing are verified; the Docker backend image build was stopped during dependency downloads.
-- Evaluate the renderer and any other evidence-backed fixes on equivalent live after-runs; produce real workflow timing graphs.
+- Existing PR 21 now maps to real test Actions runs and summary rows. Confirmed management repos: `s1ntaxe770r/digger-small-management-repo` and `s1ntaxe770r/digger-heavy-management-repo`.
+- Repeated baseline and candidate fixture runs are underway; the Docker backend image build was stopped during dependency downloads.
+- Compare the transport cache on equivalent live runs and produce timing graphs. Small/heavy management-policy runs require an EE test license; none has been supplied.
 
 No PRs created. Instrumentation does not guarantee distributed write ordering.
 
-Local startup evidence: `results/local-startup/` contains migration/build/server logs, fixture revisions, source hashes, Chromium screenshot/video and the smoke-test result. The backend binds only to loopback; no live workflow delay has been measured.
+Local startup evidence: `results/local-startup/` contains migration/build/server logs, fixture revisions, source hashes, Chromium screenshot/video and the smoke-test result. The backend binds only to loopback; the scoped tunnel routes test webhooks and authenticated job callbacks.
