@@ -239,3 +239,19 @@ go tool pprof -top scripts/comment_latency/results/live-profile/cpu.pprof
 go tool pprof -top -alloc_space scripts/comment_latency/results/live-profile/heap.pprof
 go tool trace scripts/comment_latency/results/live-profile/runtime.trace
 ```
+
+## Comprehensive browser draft
+
+Open `review.html` for the full investigation, graphs, recordings and expandable source diffs. The editable source is `investigation.md`; `build_review.py` renders it with Python-Markdown, embeds the CSS/graphs/diffs, and adds section navigation, Markdown copy/download and print controls. The HTML works directly from disk without a server or CDN. Video files remain relative, ignored local artifacts.
+
+```sh
+python3 -m pip install --target scripts/comment_latency/results/report-tools Markdown==3.8.2
+python3 scripts/comment_latency/build_review.py
+open scripts/comment_latency/review.html
+```
+
+Source diffs and the 87-path inventory are pinned to `1b31c389..5123455f`, the implementation/evidence snapshot before this presentation update. The new document does not rerun or modify the experiment. Measurement artifacts remain under `evidence/live/`.
+
+Design follows [Apple Design Skill](https://github.com/dickwu/apple-design-skill), scoped to web foundations: `layout.md` › Visual hierarchy and Adaptability, `typography.md` › Ensuring legibility, `accessibility.md` › Vision/Mobility, `color.md` › Inclusive color, and `charting-data.md` › Best practices. CSS semantic roles adapt to system light/dark appearance; system fonts, 44px toolbar controls, visible keyboard focus and native disclosure controls keep navigation familiar. The paired before/after timing bars are the main visual feature; there is no decorative motion or translucent content.
+
+Computed minimum text/background contrast across canvas and surface: light mode 5.81:1, dark mode 9.05:1. Browser checks covered 1440px desktop, 390px mobile, dark mode, 200% text size, reduced motion, clipboard, exact Markdown download, section navigation, expanded diffs, graphs, local links and print-to-PDF. This is not a full assistive-technology audit. Screenshots and a print preview are in ignored `results/review-browser/`.
