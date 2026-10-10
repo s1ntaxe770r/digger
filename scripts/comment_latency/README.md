@@ -2,28 +2,15 @@
 
 Read-only observation of a specific workflow attempt and PR comment, plus opt-in Go stage timings. No commands here create PRs. Use existing test PRs.
 
-## Recorded setup attempt
+## Current setup
 
-Branch: `perf/action-comment-latency`. Baseline code: `1b31c389`.
+Branch: `perf/action-comment-latency`. Baseline source: `c1962300`; cached-transport backend: `6de55a67`. Local Go 1.27.0 on Apple M3 Pro; Actions uses Go 1.25.6 on Ubuntu.
 
-| Check | Result |
-|---|---|
-| Git checkout | Clean baseline; investigation branch created |
-| Go | 1.27.0, darwin/arm64 |
-| GitHub CLI repo lookup | Failed to connect to api.github.com |
-| Docker container listing | Permission denied on Docker socket |
-| Initial summary package build | Failed: no space left on device |
-| Retry after disk space became available | Changed library/backend packages compile; timing tests pass |
-| Existing GitHub tests | Fail: outbound network unavailable and local TCP bind denied |
-| Full local backend / fixture workflows | Not started |
+The native backend runs on `127.0.0.1:3101`, with PostgreSQL in the scoped Compose project on port 55433. Atlas applied 156 statements. A dedicated test App is installed on exactly `s1ntaxe770r/terragrun-test`, `s1ntaxe770r/digger-small-management-repo`, and `s1ntaxe770r/digger-heavy-management-repo`. A filtered tunnel exposes test webhooks and authenticated job callbacks. Pprof stays local.
 
-Only this investigation's temporary failed-build cache was removed. No existing containers, volumes, PRs, or credentials were changed. The startup commands below are the repeatable procedure to run when network, listener and Docker access are available; they have not been validated end to end in this session.
+Initial network, Docker and disk failures were resolved. The Docker backend image build was stopped during dependency downloads; measurements use the native backend. Existing unrelated containers were left alone. Private credentials and raw logs live in ignored `backend.env` and `results/`; never commit them.
 
-## Access retry: 2026-10-10
-
-`docker ps` and authenticated `gh api user` now succeed. The HTML review opened through macOS. Timing and summary tests pass. `CI=true go test -v -p 2 ./ci/github` passes, including local HTTP server tests; its existing test requiring a specific GitHub App and exactly 388 installed repositories is skipped. Running without CI still fails for missing `GITHUB_APP_ID`. A local-only `backend.env` has now been generated with random Basic/Bearer credentials; no GitHub App credentials are configured. The isolated Compose PostgreSQL is healthy. The Docker build was stopped after several minutes without visible download progress; the cached native Go build now runs the backend on loopback. Existing containers were left unchanged.
-
-Confirmed fixture repositories: `s1ntaxe770r/terragrun-test`, `s1ntaxe770r/digger-heavy-management-repo`, and `s1ntaxe770r/digger-small-management-repo`. The existing git-timeout workflow uses noop comment reporting, so it cannot establish comment latency.
+Five usable baseline and five comparison batches completed successfully (30 workflows). Management-policy scenarios need an EE test license. See [findings](findings.md) for results and limitations.
 
 ## Local backend
 
@@ -135,7 +122,7 @@ See [findings.md](findings.md) for actual results and remaining work.
 
 ## Synthetic renderer benchmark
 
-This isolates summary rendering with an in-memory comment sink; it does not use the test repositories or measure workflow latency. Run baseline and candidate with the same toolchain and configuration, without concurrent builds. Capture five samples per job count:
+The live CLI provider returns NoopCommentUpdater, so this renderer is inactive in the measured workflow path. This benchmark isolates summary rendering with an in-memory comment sink; it does not use the test repositories or measure workflow latency. Run baseline and candidate with the same toolchain and configuration, without concurrent builds. Capture five samples per job count:
 
 ```sh
 cd libs
@@ -198,8 +185,6 @@ Stop that recorded backend process before starting another; Compose `down` only 
 
 Verified: health HTTP 200, authenticated setup HTTP 200, Chromium screenshot/video saved, CPU-profile endpoint produces a readable profile. The idle one-second profile has zero CPU samples: it only checks profiling access and is not workload evidence. Health reports `dev`; use the retained source manifest and binary hash for identity.
 
-No GitHub App was created or installed. The manifest still points at localhost and cannot receive GitHub webhooks. Live runs require a test App, credentials, a reachable webhook/API route and the instrumented CLI. No PRs, workflow dispatches or remote repository changes were made.
-
 ## Test App connected: 2026-10-10
 
 Created private App `digger-latency-s1ntaxe-1791592697` (App ID 5257586, installation 169783930) through the authenticated headless browser. Installed only on terragrun-test, digger-small-management-repo and digger-heavy-management-repo. Credentials went directly to ignored, mode-0600 `backend.env`; no credential screenshots or video were captured.
@@ -208,4 +193,49 @@ The backend was restarted with those credentials. Its installation webhook succe
 
 A temporary Cloudflare tunnel forwards to `webhook_proxy.py` on 127.0.0.1:3102. The proxy exposes only `/github/webhook` and authenticated `/repos/` and `/orgs/` APIs; public pprof returns 404, unauthenticated APIs return 403. Browser OAuth/setup callbacks remain local. The tunnel URL and process IDs are in ignored `results/app-setup/`; both tunnel and proxy remain running. Restarting a quick tunnel may change its URL, requiring the App webhook and backend PUBLIC_BASE_URL to be updated.
 
-App metadata/scope verification: `results/app-setup/app.json`, with `installed.png` showing the three selected repos. The original browser startup smoke test remains historical; the App is now connected, but no live workflow latency baseline has been collected.
+App metadata/scope verification: `results/app-setup/app.json`, with `installed.png` showing the three selected repos. The original browser startup smoke result predates App creation; live experiment details follow.
+
+## Recorded live experiment
+
+The existing `terragrun-test` PR 21 supplies three plain Terraform projects. Its fixture config was corrected from `root_dir: infra/` to `include: infra/**` (commit `929d9580`). This changed only the existing test branch; no PR was created. The workflow definition is isolated on `perf/comment-latency-20261010` (`d952ef95`). Its checked-in copy is [fixture-workflow.yml](fixture-workflow.yml).
+
+The local runner's `DIGGER_PROFILE_SETTINGS` adapter selects that workflow definition while preserving the PR branch in each job payload. The CLI source is pinned to `c1962300` in both phases. The before workflow reverses the synthetic renderer patch; that updater is inactive because `summary.GetCommentUpdater` returns `NoopCommentUpdater`. The live comparison therefore exercises the backend transport cache. Each workflow prints its source and binary hash.
+
+The first successful batch came from the test PR synchronize event. Subsequent batches replay the signed current synchronize event through the test tunnel; backend dispatch, Actions execution, status callbacks and comment edits remain real. All commands are guarded to allow only `digger plan`.
+
+```sh
+# settings.json contains workflow_ref, source_ref, phase and an absolute dispatch results path.
+# Run only one series at a time; the script waits for each three-project batch.
+python3 scripts/comment_latency/run_series.py --phase before --samples 3 4 5 6
+
+# Build from backend/; stop the old backend only after its observers finish.
+cd backend
+GOCACHE=/tmp/digger-latency-go-build go build -p 2 \
+  -o ../scripts/comment_latency/results/local-startup/backend-cached \
+  ../scripts/comment_latency/local_main.go
+cd ..
+python3 scripts/comment_latency/start_backend.py --phase after \
+  --binary scripts/comment_latency/results/local-startup/backend-cached
+python3 scripts/comment_latency/run_series.py --phase after --samples 1 2 3 4 5
+
+python3 scripts/comment_latency/live_report.py \
+  --input scripts/comment_latency/results/live \
+  --backend-before scripts/comment_latency/results/live/backend-before.log \
+  --backend-after scripts/comment_latency/results/local-startup/backend.log \
+  --output scripts/comment_latency/evidence/live \
+  --exclude-comment DIAGNOSTIC_COMMENT_ID
+```
+
+These are the recorded series IDs, not commands to rerun over existing results. Trigger and observation scripts refuse to overwrite prior observations. The restart helper archives the baseline log once; inspect existing logs before a later restart. Stage comparisons include only batches with usable transition observations. Three late baseline observations are retained and excluded.
+
+Browser evidence is in `results/local-startup/backend-setup.webm` and `backend-setup.png`. The recording covers local health/setup verification, not private credential pages. App installation scope was checked separately. Raw backend/CLI logs remain mode 0600; published timing records contain correlation IDs and durations only.
+
+## Separate diagnostic profile
+
+After the comparison series finishes, `python3 scripts/comment_latency/profile_live.py` runs sample 6 with 120-second CPU and runtime-trace captures, then saves a heap profile. It records its run/comment IDs in `results/live-profile/profile.json`; pass its `excluded_comments` to `live_report.py --exclude-comment`. Do not combine profiled runs with the before/after sample. Raw profiles remain private local artifacts.
+
+```sh
+go tool pprof -top scripts/comment_latency/results/live-profile/cpu.pprof
+go tool pprof -top -alloc_space scripts/comment_latency/results/live-profile/heap.pprof
+go tool trace scripts/comment_latency/results/live-profile/runtime.trace
+```

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="486" viewBox="0 0 1000 486">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" font-size="13" fill="#17212b">
+<text x="20" y="25">Backend stage medians · before (blue), cached transport (green)</text>
+<text x="20" y="70">client</text>
+<rect x="180" y="50" width="173.054" height="20" fill="#3268ae"/>
+<text x="790" y="65">426.986 ms (n=30)</text>
+<rect x="180" y="75" width="0.398" height="20" fill="#13866b"/>
+<text x="790" y="90">0.982 ms (n=30)</text>
+<text x="20" y="136">summary_edit</text>
+<rect x="180" y="116" width="402.195" height="20" fill="#3268ae"/>
+<text x="790" y="131">992.358 ms (n=30)</text>
+<rect x="180" y="141" width="393.329" height="20" fill="#13866b"/>
+<text x="790" y="156">970.483 ms (n=30)</text>
+<text x="20" y="202">summary_render</text>
+<rect x="180" y="182" width="0.037" height="20" fill="#3268ae"/>
+<text x="790" y="197">0.091 ms (n=30)</text>
+<rect x="180" y="207" width="0.033" height="20" fill="#13866b"/>
+<text x="790" y="222">0.082 ms (n=30)</text>
+<text x="20" y="268">jobs_initial</text>
+<rect x="180" y="248" width="1.630" height="20" fill="#3268ae"/>
+<text x="790" y="263">4.022 ms (n=30)</text>
+<rect x="180" y="273" width="1.008" height="20" fill="#13866b"/>
+<text x="790" y="288">2.486 ms (n=30)</text>
+<text x="20" y="334">jobs_refresh</text>
+<rect x="180" y="314" width="1.131" height="20" fill="#3268ae"/>
+<text x="790" y="329">2.792 ms (n=30)</text>
+<rect x="180" y="339" width="0.772" height="20" fill="#13866b"/>
+<text x="790" y="354">1.905 ms (n=30)</text>
+<text x="20" y="400">final_update_total</text>
+<rect x="180" y="380" width="590.000" height="20" fill="#3268ae"/>
+<text x="790" y="395">1455.741 ms (n=15)</text>
+<rect x="180" y="405" width="391.658" height="20" fill="#13866b"/>
+<text x="790" y="420">966.360 ms (n=15)</text>
+</g></svg>

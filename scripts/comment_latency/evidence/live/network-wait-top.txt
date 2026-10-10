@@ -1,0 +1,38 @@
+Type: delay
+Showing nodes accounting for 175.67s, 99.94% of 175.77s total
+Dropped 192 nodes (cum <= 0.88s)
+      flat  flat%   sum%        cum   cum%
+       97s 55.19% 55.19%        97s 55.19%  internal/poll.(*FD).Read
+    78.67s 44.76% 99.94%     78.67s 44.76%  internal/poll.(*FD).Accept
+         0     0% 99.94%     91.78s 52.21%  bufio.(*Reader).Read
+         0     0% 99.94%      3.02s  1.72%  bytes.(*Buffer).ReadFrom
+         0     0% 99.94%     91.78s 52.21%  crypto/tls.(*Conn).Read
+         0     0% 99.94%     91.96s 52.32%  crypto/tls.(*Conn).readFromUntil
+         0     0% 99.94%     91.96s 52.32%  crypto/tls.(*Conn).readRecord
+         0     0% 99.94%     91.96s 52.32%  crypto/tls.(*Conn).readRecordOrCCS
+         0     0% 99.94%     78.67s 44.76%  github.com/gin-gonic/gin.(*Engine).Run
+         0     0% 99.94%      3.02s  1.72%  io.Copy
+         0     0% 99.94%     92.27s 52.50%  io.ReadAtLeast
+         0     0% 99.94%     91.78s 52.21%  io.ReadFull
+         0     0% 99.94%      3.02s  1.72%  io.copyBuffer
+         0     0% 99.94%     78.67s 44.76%  main.main
+         0     0% 99.94%     78.67s 44.76%  net.(*TCPListener).Accept
+         0     0% 99.94%     78.67s 44.76%  net.(*TCPListener).accept
+         0     0% 99.94%     93.97s 53.47%  net.(*conn).Read
+         0     0% 99.94%     93.97s 53.47%  net.(*netFD).Read
+         0     0% 99.94%     78.67s 44.76%  net.(*netFD).accept
+         0     0% 99.94%     78.67s 44.76%  net/http.(*Server).ListenAndServe
+         0     0% 99.94%     78.67s 44.76%  net/http.(*Server).Serve
+         0     0% 99.94%      1.23s   0.7%  net/http.(*connReader).backgroundRead
+         0     0% 99.94%     78.67s 44.76%  net/http.ListenAndServe
+         0     0% 99.94%     91.78s 52.21%  net/http/internal/http2.(*ClientConn).readLoop
+         0     0% 99.94%     91.78s 52.21%  net/http/internal/http2.(*Framer).ReadFrame
+         0     0% 99.94%     91.67s 52.15%  net/http/internal/http2.(*Framer).ReadFrameHeader
+         0     0% 99.94%     91.78s 52.21%  net/http/internal/http2.(*clientConnReadLoop).run
+         0     0% 99.94%     91.67s 52.15%  net/http/internal/http2.readFrameHeader
+         0     0% 99.94%      3.02s  1.72%  os.(*File).Read
+         0     0% 99.94%      3.02s  1.72%  os.(*File).WriteTo
+         0     0% 99.94%      3.02s  1.72%  os.(*File).read
+         0     0% 99.94%      3.02s  1.72%  os.genericWriteTo
+         0     0% 99.94%      3.02s  1.72%  os/exec.(*Cmd).Start.func2
+         0     0% 99.94%      3.02s  1.72%  os/exec.(*Cmd).writerDescriptor.func1

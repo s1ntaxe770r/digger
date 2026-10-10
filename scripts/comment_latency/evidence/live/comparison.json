@@ -1,0 +1,937 @@
+{
+  "phases": {
+    "before": {
+      "outcomes": {
+        "already_final": 5,
+        "initial_match_unverified": 3,
+        "overlapping_bounds": 10
+      },
+      "valid_runs": 15,
+      "batches": 5,
+      "stages": [
+        {
+          "writer": "backend",
+          "stage": "batch_refresh",
+          "n": 30,
+          "errors": 0,
+          "median": 0.905896,
+          "low": 0.259792,
+          "high": 2.2425
+        },
+        {
+          "writer": "backend",
+          "stage": "client",
+          "n": 30,
+          "errors": 0,
+          "median": 426.98572950000005,
+          "low": 284.136333,
+          "high": 761.2685
+        },
+        {
+          "writer": "backend",
+          "stage": "job_comment_update",
+          "n": 30,
+          "errors": 0,
+          "median": 1443.219896,
+          "low": 1092.322125,
+          "high": 1923.426958
+        },
+        {
+          "writer": "backend",
+          "stage": "jobs_initial",
+          "n": 30,
+          "errors": 0,
+          "median": 4.022375,
+          "low": 0.92125,
+          "high": 9.447542
+        },
+        {
+          "writer": "backend",
+          "stage": "jobs_refresh",
+          "n": 30,
+          "errors": 0,
+          "median": 2.791729,
+          "low": 0.948791,
+          "high": 7.737583
+        },
+        {
+          "writer": "backend",
+          "stage": "realtime_total",
+          "n": 30,
+          "errors": 0,
+          "median": 1443.174042,
+          "low": 1092.278,
+          "high": 1923.34775
+        },
+        {
+          "writer": "backend",
+          "stage": "status_request",
+          "n": 30,
+          "errors": 0,
+          "median": 29.529708499999998,
+          "low": 16.385875,
+          "high": 1744.306875
+        },
+        {
+          "writer": "backend",
+          "stage": "summary_edit",
+          "n": 30,
+          "errors": 0,
+          "median": 992.357771,
+          "low": 799.643666,
+          "high": 1320.47925
+        },
+        {
+          "writer": "backend",
+          "stage": "summary_render",
+          "n": 30,
+          "errors": 0,
+          "median": 0.091167,
+          "low": 0.026792,
+          "high": 0.232334
+        },
+        {
+          "writer": "backend",
+          "stage": "final_update_total",
+          "n": 15,
+          "errors": 0,
+          "median": 1455.741,
+          "low": 1092.322125,
+          "high": 1896.540708
+        }
+      ]
+    },
+    "after": {
+      "outcomes": {
+        "overlapping_bounds": 9,
+        "already_final": 6
+      },
+      "valid_runs": 15,
+      "batches": 5,
+      "stages": [
+        {
+          "writer": "backend",
+          "stage": "batch_refresh",
+          "n": 30,
+          "errors": 0,
+          "median": 0.5952915,
+          "low": 0.254583,
+          "high": 10.988584
+        },
+        {
+          "writer": "backend",
+          "stage": "client",
+          "n": 30,
+          "errors": 0,
+          "median": 0.9816665,
+          "low": 0.239625,
+          "high": 13.130334
+        },
+        {
+          "writer": "backend",
+          "stage": "job_comment_update",
+          "n": 30,
+          "errors": 0,
+          "median": 977.2695,
+          "low": 779.05625,
+          "high": 1543.65275
+        },
+        {
+          "writer": "backend",
+          "stage": "jobs_initial",
+          "n": 30,
+          "errors": 0,
+          "median": 2.48625,
+          "low": 0.938166,
+          "high": 8.998875
+        },
+        {
+          "writer": "backend",
+          "stage": "jobs_refresh",
+          "n": 30,
+          "errors": 0,
+          "median": 1.9049999999999998,
+          "low": 0.913834,
+          "high": 3.161958
+        },
+        {
+          "writer": "backend",
+          "stage": "realtime_total",
+          "n": 30,
+          "errors": 0,
+          "median": 977.247271,
+          "low": 779.017708,
+          "high": 1543.634875
+        },
+        {
+          "writer": "backend",
+          "stage": "status_request",
+          "n": 30,
+          "errors": 0,
+          "median": 29.456667,
+          "low": 12.537916,
+          "high": 1157.992375
+        },
+        {
+          "writer": "backend",
+          "stage": "summary_edit",
+          "n": 30,
+          "errors": 0,
+          "median": 970.4828545,
+          "low": 773.534375,
+          "high": 1530.986917
+        },
+        {
+          "writer": "backend",
+          "stage": "summary_render",
+          "n": 30,
+          "errors": 0,
+          "median": 0.0822715,
+          "low": 0.031791,
+          "high": 0.186709
+        },
+        {
+          "writer": "backend",
+          "stage": "final_update_total",
+          "n": 15,
+          "errors": 0,
+          "median": 966.35975,
+          "low": 779.05625,
+          "high": 1322.1805
+        }
+      ]
+    }
+  },
+  "runs": [
+    {
+      "run": 38010706751,
+      "job_id": "fMRkXIz8ni",
+      "comment_id": "6091816315",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        39726.49208386429,
+        44428.12612489797
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -15429.609457962215,
+      "delay_upper_ms": -5906.471542082727,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        50334.5976669807,
+        55156.1015418265
+      ]
+    },
+    {
+      "run": 38010708432,
+      "job_id": "r7TiqzHJz6",
+      "comment_id": "6091816315",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        40015.58795804158,
+        44816.10495806672
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -15464.632874820381,
+      "delay_upper_ms": -5782.471124781296,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        50598.57608284801,
+        55480.22083286196
+      ]
+    },
+    {
+      "run": 38010710048,
+      "job_id": "MfvFDgtdNv",
+      "comment_id": "6091816315",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        40018.789290916175,
+        44692.09862500429
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -18165.955000091344,
+      "delay_upper_ms": -5894.029707880691,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        50586.12833288498,
+        58184.74429100752
+      ]
+    },
+    {
+      "run": 38010950469,
+      "job_id": "TRpfDGQO1W",
+      "comment_id": "6091847775",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        null,
+        2063.541790936142
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": null,
+      "delay_upper_ms": null,
+      "kind": "summary",
+      "outcome": "initial_match_unverified",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        null,
+        978.5341250244528
+      ]
+    },
+    {
+      "run": 38010952260,
+      "job_id": "5BirgC5dKB",
+      "comment_id": "6091847775",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        null,
+        2571.165957953781
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": null,
+      "delay_upper_ms": null,
+      "kind": "summary",
+      "outcome": "initial_match_unverified",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        null,
+        790.0072080083191
+      ]
+    },
+    {
+      "run": 38010954415,
+      "job_id": "1M0k12Q5lc",
+      "comment_id": "6091847775",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        null,
+        1813.5720829013735
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": null,
+      "delay_upper_ms": null,
+      "kind": "summary",
+      "outcome": "initial_match_unverified",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        null,
+        933.1313329748809
+      ]
+    },
+    {
+      "run": 38011130185,
+      "job_id": "UD08GezYU4",
+      "comment_id": "6091873446",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        40016.998334089294,
+        44679.42904192023
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7459.741999860853,
+      "delay_upper_ms": 1735.2604169864208,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        42944.16862493381,
+        47476.74033395015
+      ]
+    },
+    {
+      "run": 38011132645,
+      "job_id": "bvlUjTaRZl",
+      "comment_id": "6091873446",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        28603.770832996815,
+        33302.63475002721
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7527.329541975632,
+      "delay_upper_ms": 1754.5997500419617,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        31548.034999985248,
+        36131.10037497245
+      ]
+    },
+    {
+      "run": 38011134878,
+      "job_id": "6Bbp7dcxfn",
+      "comment_id": "6091873446",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        27908.775083022192,
+        32600.02087499015
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7458.76608393155,
+      "delay_upper_ms": 1787.9428749438375,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        30812.078000046313,
+        35367.54116695374
+      ]
+    },
+    {
+      "run": 38011239509,
+      "job_id": "rxustB0FqJ",
+      "comment_id": "6091890765",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        31697.498458903283,
+        36294.43025006913
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7396.222083130851,
+      "delay_upper_ms": 1690.4200001154095,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        34604.01024995372,
+        39093.720542034134
+      ]
+    },
+    {
+      "run": 38011241223,
+      "job_id": "6L0VR4LpSh",
+      "comment_id": "6091890765",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        24382.180833024904,
+        29201.630249852315
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7618.334041908383,
+      "delay_upper_ms": 1808.8377499952912,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        27392.792499857023,
+        32000.514874933288
+      ]
+    },
+    {
+      "run": 38011243132,
+      "job_id": "sLNRLfEFFi",
+      "comment_id": "6091890765",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        40660.59358394705,
+        45312.45620897971
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -11266.854291083291,
+      "delay_upper_ms": -2004.7271659132093,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        47317.18337489292,
+        51927.44787503034
+      ]
+    },
+    {
+      "run": 38011357208,
+      "job_id": "PZlReuVCQZ",
+      "comment_id": "6091908773",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        42863.262332975864,
+        47709.80970794335
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -11528.752458980307,
+      "delay_upper_ms": -2001.8187500536442,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        49711.628457996994,
+        54392.01479195617
+      ]
+    },
+    {
+      "run": 38011359161,
+      "job_id": "HooTgl9m0Q",
+      "comment_id": "6091908773",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        34430.32641708851,
+        39143.88020802289
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7585.56804084219,
+      "delay_upper_ms": 1809.0168330818415,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        37334.86337494105,
+        42015.8944579307
+      ]
+    },
+    {
+      "run": 38011361150,
+      "job_id": "66ESHlw0rm",
+      "comment_id": "6091908773",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        27346.887208987027,
+        32276.44104207866
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7685.050750151277,
+      "delay_upper_ms": 1997.483666986227,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        30278.957375092432,
+        35031.937959138304
+      ]
+    },
+    {
+      "run": 38011493929,
+      "job_id": "3bgn7FhuPv",
+      "comment_id": "6091926882",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        24324.14395804517,
+        29304.875625064597
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7992.420417023823,
+      "delay_upper_ms": 1974.752875044942,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        27330.122750019655,
+        32316.564375068992
+      ]
+    },
+    {
+      "run": 38011496220,
+      "job_id": "heEhafTmPL",
+      "comment_id": "6091926882",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        35489.718625089154,
+        41174.001374980435
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -8490.481541026384,
+      "delay_upper_ms": 1777.5752500165254,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        39396.42612496391,
+        43980.20016611554
+      ]
+    },
+    {
+      "run": 38011498082,
+      "job_id": "O68ACoxv48",
+      "comment_id": "6091926882",
+      "phase": "before",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        28386.950874933973,
+        33099.67499994673
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7630.271792178974,
+      "delay_upper_ms": 1720.9660408552736,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        31378.708959091455,
+        36017.22266711295
+      ]
+    },
+    {
+      "run": 38011704898,
+      "job_id": "n8MkYM6mRz",
+      "comment_id": "6091959548",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        28592.806166037917,
+        33311.838207999244
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7595.357166836038,
+      "delay_upper_ms": 1785.5346670839936,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        31526.30354091525,
+        36188.163332873955
+      ]
+    },
+    {
+      "run": 38011707213,
+      "job_id": "aOOEkV7Xk7",
+      "comment_id": "6091959548",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        36578.41816684231,
+        42312.92483396828
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -12302.592208143324,
+      "delay_upper_ms": -2001.9537499174476,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        44314.87858388573,
+        48881.010374985635
+      ]
+    },
+    {
+      "run": 38011708982,
+      "job_id": "jRdJvdpwRP",
+      "comment_id": "6091959548",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        30904.25454103388,
+        35757.5407079421
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7684.86591684632,
+      "delay_upper_ms": 1832.2051670402288,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        33925.33554090187,
+        38589.1204578802
+      ]
+    },
+    {
+      "run": 38011825843,
+      "job_id": "DylM7Eu8b1",
+      "comment_id": "6091977000",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        44245.81062514335,
+        49322.111250134185
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -11728.220666991547,
+      "delay_upper_ms": -2005.044707795605,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        51327.15595792979,
+        55974.031292134896
+      ]
+    },
+    {
+      "run": 38011827800,
+      "job_id": "7CvmHZwZJu",
+      "comment_id": "6091977000",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        36989.52229204588,
+        42043.503584107384
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7924.9726249836385,
+      "delay_upper_ms": 2126.3896671589464,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        39917.11391694844,
+        44914.494917029515
+      ]
+    },
+    {
+      "run": 38011829550,
+      "job_id": "RmjCbSTc3O",
+      "comment_id": "6091977000",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        27972.953042015433,
+        33813.48470808007
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -8696.42945798114,
+      "delay_upper_ms": 2815.2237911708653,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        30998.260916909203,
+        36669.38249999657
+      ]
+    },
+    {
+      "run": 38011950370,
+      "job_id": "PwdLhkrydV",
+      "comment_id": "6091994370",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        39574.871707940474,
+        44260.42674994096
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -11298.820000141859,
+      "delay_upper_ms": -2001.5825419686735,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        46262.009291909635,
+        50873.69170808233
+      ]
+    },
+    {
+      "run": 38011952243,
+      "job_id": "dmiIrI3E41",
+      "comment_id": "6091994370",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        23751.61062506959,
+        28454.348125029355
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7454.568292014301,
+      "delay_upper_ms": 1721.3689999189228,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        26732.979125110433,
+        31206.17891708389
+      ]
+    },
+    {
+      "run": 38011953998,
+      "job_id": "Yog9KNz0vE",
+      "comment_id": "6091994370",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        27423.672332894057,
+        32173.37358300574
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -11762.674417113885,
+      "delay_upper_ms": -2005.2314999047667,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        34178.60508291051,
+        39186.34675000794
+      ]
+    },
+    {
+      "run": 38012063090,
+      "job_id": "lEnqtMGPyS",
+      "comment_id": "6092010635",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        32021.737291943282,
+        36652.54325000569
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7527.485583210364,
+      "delay_upper_ms": 1713.9487080276012,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        34938.59454197809,
+        39549.222875153646
+      ]
+    },
+    {
+      "run": 38012064458,
+      "job_id": "MUM48tdclx",
+      "comment_id": "6092010635",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        35761.43850013614,
+        40760.063709225506
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7837.537041865289,
+      "delay_upper_ms": 1918.3623341377825,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        38841.70137508772,
+        43598.975542001426
+      ]
+    },
+    {
+      "run": 38012065982,
+      "job_id": "yOJOTAlXNA",
+      "comment_id": "6092010635",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        27888.16445786506,
+        32661.044916836545
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -7645.572167122737,
+      "delay_upper_ms": 1834.5833749044687,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        30826.461541932076,
+        35533.736624987796
+      ]
+    },
+    {
+      "run": 38012180598,
+      "job_id": "s3jENG52iQ",
+      "comment_id": "6092027030",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        28875.099750002846,
+        33973.78724999726
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -11842.2505420167,
+      "delay_upper_ms": -2005.6134168989956,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        35979.400666896254,
+        40717.350292019546
+      ]
+    },
+    {
+      "run": 38012182030,
+      "job_id": "0nLGRmeZRu",
+      "comment_id": "6092027030",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        40080.185500206426,
+        45453.46229104325
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -8332.51804090105,
+      "delay_upper_ms": 2049.6624580118805,
+      "kind": "summary",
+      "outcome": "overlapping_bounds",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        43403.79983303137,
+        48412.703541107476
+      ]
+    },
+    {
+      "run": 38012183854,
+      "job_id": "hQoQXpt7MY",
+      "comment_id": "6092027030",
+      "phase": "after",
+      "workflow_sha": "d952ef95ed83f8273c005e9a1b9f0f90a27f1ab4",
+      "comment_bounds_ms": [
+        35150.30416706577,
+        40080.93470800668
+      ],
+      "conclusion": "success",
+      "delay_lower_ms": -12256.10320805572,
+      "delay_upper_ms": -2004.713875008747,
+      "kind": "summary",
+      "outcome": "already_final",
+      "reversions": 0,
+      "timed_out": false,
+      "workflow_bounds_ms": [
+        42085.64858301543,
+        47406.40737512149
+      ]
+    }
+  ],
+  "excluded_comments": [
+    "6092045564"
+  ],
+  "note": "Inclusive stage durations overlap. Do not sum them or interpret them as exclusive critical-path time."
+}

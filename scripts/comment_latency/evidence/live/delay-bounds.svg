@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="785">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" font-size="11" fill="#17212b">
+<text x="20" y="22">Final summary row − workflow completion · polling bounds (seconds)</text>
+<line x1="792.7839535392008" y1="35" x2="792.7839535392008" y2="750" stroke="#555"/>
+<text x="20" y="56">before · 38010706751</text>
+<line x1="314.77238672236365" y1="52" x2="609.8005978112259" y2="52" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="79">before · 38010708432</text>
+<line x1="313.68735612497466" y1="75" x2="613.6421489484526" y2="75" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="102">before · 38010710048</text>
+<line x1="230.0" y1="98" x2="610.1860476618649" y2="98" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="125">before · 38011130185</text>
+<line x1="561.6800509344104" y1="121" x2="846.542576077173" y2="121" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="148">before · 38011132645</text>
+<line x1="559.5861789545909" y1="144" x2="847.1417114551783" y2="144" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="171">before · 38011134878</text>
+<line x1="561.7102849532115" y1="167" x2="848.1746863610136" y2="167" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="194">before · 38011239509</text>
+<line x1="563.6479072824862" y1="190" x2="845.153413377778" y2="190" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="217">before · 38011241223</text>
+<line x1="556.7668461828343" y1="213" x2="848.8220126584808" y2="213" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="240">before · 38011243132</text>
+<line x1="443.7351530850501" y1="236" x2="730.6772115487905" y2="236" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="263">before · 38011357208</text>
+<line x1="435.6215093843465" y1="259" x2="730.7673146992154" y2="259" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="286">before · 38011359161</text>
+<line x1="557.7819417074907" y1="282" x2="848.8275606788002" y2="282" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="309">before · 38011361150</text>
+<line x1="554.6999527642463" y1="305" x2="854.6662908691586" y2="305" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="332">before · 38011493929</text>
+<line x1="545.1775953478765" y1="328" x2="853.9620875968435" y2="328" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="355">before · 38011496220</text>
+<line x1="529.7475885869367" y1="351" x2="847.8534958182993" y2="351" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="378">before · 38011498082</text>
+<line x1="556.3970129264153" y1="374" x2="846.0997342055276" y2="374" stroke="#3268ae" stroke-width="5"/>
+<text x="20" y="401">after · 38011704898</text>
+<line x1="557.4786731466866" y1="397" x2="848.1000797278749" y2="397" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="424">after · 38011707213</text>
+<line x1="411.64784031836257" y1="420" x2="730.7631323836101" y2="420" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="447">after · 38011708982</text>
+<line x1="554.7056789271762" y1="443" x2="849.5459386699944" y2="443" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="470">after · 38011825843</text>
+<line x1="429.44195500862656" y1="466" x2="730.6673740546435" y2="466" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="493">after · 38011827800</text>
+<line x1="547.2671378498629" y1="489" x2="858.6598176841135" y2="489" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="516">after · 38011829550</text>
+<line x1="523.3672918766135" y1="512" x2="880.0" y2="512" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="539">after · 38011950370</text>
+<line x1="442.7448507243113" y1="535" x2="730.7746324603744" y2="535" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="562">after · 38011952243</text>
+<line x1="561.8403331632458" y1="558" x2="846.1122179364934" y2="558" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="585">after · 38011953998</text>
+<line x1="428.3745727703681" y1="581" x2="730.6615872076716" y2="581" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="608">after · 38012063090</text>
+<line x1="559.5813447742246" y1="604" x2="845.8823362040442" y2="604" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="631">after · 38012064458</text>
+<line x1="549.9759050546206" y1="627" x2="852.2151003586947" y2="627" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="654">after · 38012065982</text>
+<line x1="555.9230050638262" y1="650" x2="849.6196158988638" y2="650" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="677">after · 38012180598</text>
+<line x1="425.90929273527433" y1="673" x2="730.6497553631066" y2="673" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="700">after · 38012182030</text>
+<line x1="534.6413210174628" y1="696" x2="856.2827974774908" y2="696" stroke="#13866b" stroke-width="5"/>
+<text x="20" y="723">after · 38012183854</text>
+<line x1="413.0880763678989" y1="719" x2="730.6776233029626" y2="719" stroke="#13866b" stroke-width="5"/>
+<text x="230" y="770">-18.2 s</text>
+<text x="782.7839535392008" y="770">0</text>
+<text x="880" y="770">2.8 s</text>
+</g></svg>

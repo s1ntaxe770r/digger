@@ -1,0 +1,7 @@
+{
+  "phase": "after",
+  "source_ref": "6de55a6717c981934fe241434e30571091bbb59b",
+  "binary_sha256": "a70eab9385da8434b9ed7ea4e3be2076334697c31c0057f97d899e433626993d",
+  "source_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "health_status": 200
+}

@@ -1,0 +1,6 @@
+{
+  "phase": "before",
+  "source_ref": "c1962300fa40d9cd07b39f737c556ea268c8ebac",
+  "binary_sha256": "cfd04773c9dd2d7c95f1e4034dd81d4c690feee00f849ad64c227b8e2209498f",
+  "note": "Native instrumented backend built before installation-transport cache changes. Local profiling dispatch adapter enabled."
+}

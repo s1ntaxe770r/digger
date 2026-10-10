@@ -1,0 +1,541 @@
+File: backend-cached
+Type: alloc_space
+Time: 2026-10-10 02:14:54 WAT
+Showing nodes accounting for 91.96MB, 100% of 91.96MB total
+      flat  flat%   sum%        cum   cum%
+       9MB  9.79%  9.79%        9MB  9.79%  reflect.unsafe_New
+    8.06MB  8.76% 18.55%     8.06MB  8.76%  io.ReadAll
+    5.01MB  5.45% 24.00%     5.01MB  5.45%  runtime.mallocgc
+    3.50MB  3.81% 27.81%     3.50MB  3.81%  encoding/json/v2.makeString
+    3.03MB  3.30% 31.11%     3.03MB  3.30%  reflect.unsafe_NewArray
+    2.50MB  2.72% 33.83%        3MB  3.26%  gorm.io/gorm.(*DB).getInstance
+    2.31MB  2.52% 36.34%     2.31MB  2.52%  runtime/trace.(*traceMultiplexer).startLocked
+       2MB  2.18% 38.52%        2MB  2.18%  github.com/aws/aws-sdk-go/aws/endpoints.init
+       2MB  2.18% 40.69%        2MB  2.18%  gopkg.in/yaml%2ev3.(*parser).node
+       2MB  2.17% 42.87%     3.50MB  3.81%  github.com/jackc/pgx/v5/stdlib.(*Rows).Next
+    1.72MB  1.87% 44.74%     1.72MB  1.87%  runtime/pprof.StartCPUProfile
+    1.51MB  1.64% 46.38%     5.05MB  5.49%  encoding/json/jsontext.(*decoderState).fetch
+    1.50MB  1.63% 48.02%    10.54MB 11.46%  gorm.io/gorm.Scan
+    1.03MB  1.12% 49.14%     1.03MB  1.12%  compress/flate.(*dictDecoder).init (inline)
+    1.03MB  1.12% 50.26%     1.03MB  1.12%  regexp.(*bitState).reset
+    1.01MB  1.10% 51.36%     1.01MB  1.10%  os.readFileContents
+       1MB  1.09% 52.45%        1MB  1.09%  bufio.(*Scanner).Scan
+       1MB  1.09% 53.55%        1MB  1.09%  bufio.NewReaderSize (inline)
+       1MB  1.09% 54.64%     2.04MB  2.21%  compress/flate.NewReader
+       1MB  1.09% 55.73%        1MB  1.09%  github.com/jackc/pgx/v5/pgtype.encodePlanStringToAnyTextFormat.Encode
+       1MB  1.09% 56.82%        1MB  1.09%  slices.Grow[go.shape.[]uint8,go.shape.uint8] (inline)
+       1MB  1.09% 57.91%        1MB  1.09%  github.com/diggerhq/digger/backend/utils.DiggerGithubRealClientProvider.Get
+       1MB  1.09% 59.00%        1MB  1.09%  bytes.Clone (inline)
+       1MB  1.09% 60.08%        1MB  1.09%  github.com/jackc/pgx/v5/pgconn.(*PgConn).convertRowDescription
+       1MB  1.09% 61.17%        1MB  1.09%  os.(*File).readdir
+       1MB  1.09% 62.26%     1.50MB  1.63%  gorm.io/gorm.(*Statement).AddClause
+       1MB  1.09% 63.35%        1MB  1.09%  bytes.growSlice
+       1MB  1.09% 64.44%        1MB  1.09%  github.com/diggerhq/digger/backend/utils.GenerateRealtimeCommentMessage
+       1MB  1.09% 65.53%     1.50MB  1.63%  gorm.io/gorm/callbacks.BuildQuerySQL
+       1MB  1.09% 66.61%        1MB  1.09%  gorm.io/gorm.(*Statement).clone
+       1MB  1.09% 67.70%        1MB  1.09%  net/http/internal/http2.(*Framer).readMetaFrame.func1
+       1MB  1.09% 68.79%        1MB  1.09%  database/sql.driverArgsConnLocked
+       1MB  1.09% 69.88%        1MB  1.09%  github.com/jackc/pgx/v5/pgtype.scanPlanString.Scan
+       1MB  1.09% 70.96%        1MB  1.09%  internal/bytealg.MakeNoZero
+       1MB  1.09% 72.05%     1.50MB  1.63%  crypto/internal/fips140/hmac.New[go.shape.interface { BlockSize int; Reset; Size int; Sum []uint8; Write  }]
+       1MB  1.09% 73.14%        1MB  1.09%  math/big.nat.make (inline)
+    0.67MB  0.73% 73.87%     0.67MB  0.73%  reflect.compiledTypelinks
+    0.51MB  0.55% 74.42%     0.51MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*File).initDecls (inline)
+    0.50MB  0.55% 74.97%     0.50MB  0.55%  cloud.google.com/go/monitoring/apiv3/v2/monitoringpb.init
+    0.50MB  0.55% 75.52%     0.50MB  0.55%  github.com/jackc/pgx/v5/internal/iobufpool.init.0.func1
+    0.50MB  0.55% 76.06%        5MB  5.44%  encoding/json/v2.makeStringArshaler.func2
+    0.50MB  0.55% 76.61%     0.50MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*Message).unmarshalFull
+    0.50MB  0.55% 77.16%     0.50MB  0.55%  main.profileCI.TriggerWorkflow
+    0.50MB  0.54% 77.70%     0.50MB  0.54%  github.com/jackc/pgx/v5/pgproto3.(*Bind).Encode
+    0.50MB  0.54% 78.24%     0.50MB  0.54%  gorm.io/gorm/clause.Set.MergeClause
+    0.50MB  0.54% 78.79%     0.50MB  0.54%  github.com/jackc/pgx/v5/pgtype.scanPlanBinaryBytesToBytes.Scan
+    0.50MB  0.54% 79.33%     0.50MB  0.54%  sync.(*Pool).pinSlow
+    0.50MB  0.54% 79.88%     0.50MB  0.54%  vendor/golang.org/x/crypto/cryptobyte.(*Builder).add (inline)
+    0.50MB  0.54% 80.42%     5.52MB  6.00%  github.com/diggerhq/digger/backend/controllers.UpdateCheckRunForJob
+    0.50MB  0.54% 80.97%     0.50MB  0.54%  strings.(*Builder).WriteByte
+    0.50MB  0.54% 81.51%     0.50MB  0.54%  gopkg.in/yaml%2ev3.yaml_insert_token
+    0.50MB  0.54% 82.05%        1MB  1.09%  gorm.io/gorm/schema.(*Schema).ParseField
+    0.50MB  0.54% 82.60%     0.50MB  0.54%  crypto/x509.parseCertificate
+    0.50MB  0.54% 83.14%     0.50MB  0.54%  github.com/jackc/pgx/v5/stdlib.namedValueToInterface (inline)
+    0.50MB  0.54% 83.69%     1.52MB  1.65%  gorm.io/gorm/schema.ParseWithSpecialTableName
+    0.50MB  0.54% 84.23%     0.50MB  0.54%  net/http.Header.Clone (inline)
+    0.50MB  0.54% 84.77%     0.50MB  0.54%  net/textproto.MIMEHeader.Set (inline)
+    0.50MB  0.54% 85.32%     0.50MB  0.54%  net/http.(*Request).WithContext (inline)
+    0.50MB  0.54% 85.86%     0.50MB  0.54%  vendor/golang.org/x/net/http2/hpack.(*Decoder).decodeString
+    0.50MB  0.54% 86.41%     0.50MB  0.54%  compress/flate.(*huffmanDecoder).init
+    0.50MB  0.54% 86.95%     0.50MB  0.54%  github.com/jackc/pgx/v5.(*Conn).getRows
+    0.50MB  0.54% 87.49%     0.50MB  0.54%  crypto/internal/fips140/sha256.New (inline)
+    0.50MB  0.54% 88.04%     0.50MB  0.54%  time.NewTicker
+    0.50MB  0.54% 88.58%    14.56MB 15.83%  github.com/diggerhq/digger/backend/controllers.DiggerController.GithubAppWebHook
+    0.50MB  0.54% 89.13%     0.50MB  0.54%  net/textproto.(*Reader).ReadLine (inline)
+    0.50MB  0.54% 89.67%     0.50MB  0.54%  os.newFile
+    0.50MB  0.54% 90.21%     0.50MB  0.54%  github.com/getsentry/sentry-go.(*contextifyFramesIntegration).addContextLinesToFrame (inline)
+    0.50MB  0.54% 90.76%     0.50MB  0.54%  github.com/diggerhq/digger/backend/logging.GetGoroutineID
+    0.50MB  0.54% 91.30%        1MB  1.09%  gorm.io/gorm/clause.Set.Build
+    0.50MB  0.54% 91.84%     0.50MB  0.54%  gorm.io/gorm.(*Statement).BuildCondition
+    0.50MB  0.54% 92.39%        2MB  2.18%  net/http/internal/http2.(*Framer).readMetaFrame
+    0.50MB  0.54% 92.93%     0.50MB  0.54%  regexp/syntax.(*compiler).inst (inline)
+    0.50MB  0.54% 93.48%        3MB  3.26%  github.com/jackc/pgx/v5/stdlib.(*Conn).QueryContext
+    0.50MB  0.54% 94.02%     0.50MB  0.54%  gopkg.in/yaml%2ev3.read
+    0.50MB  0.54% 94.56%     1.50MB  1.63%  math/big.nat.scan
+    0.50MB  0.54% 95.11%     0.50MB  0.54%  time.Time.Format
+    0.50MB  0.54% 95.65%    26.57MB 28.89%  gorm.io/gorm.(*processor).Execute
+    0.50MB  0.54% 96.19%     0.50MB  0.54%  net.(*Dialer).dialCtx
+    0.50MB  0.54% 96.74%     0.50MB  0.54%  net/textproto.canonicalMIMEHeaderKey
+    0.50MB  0.54% 97.28%     0.50MB  0.54%  database/sql.(*Rows).close
+    0.50MB  0.54% 97.83%     0.50MB  0.54%  github.com/bradleyfalzon/ghinstallation/v2.cloneRequest (inline)
+    0.50MB  0.54% 98.37%    13.04MB 14.18%  github.com/diggerhq/digger/backend/controllers.UpdateCheckRunForBatch
+    0.50MB  0.54% 98.91%    15.52MB 16.88%  github.com/diggerhq/digger/backend/middleware.HttpBasicApiAuth.func1
+    0.50MB  0.54% 99.46%        1MB  1.09%  gorm.io/gorm/schema.GetIdentityFieldValuesMap
+    0.50MB  0.54%   100%     0.50MB  0.54%  regexp.makeOnePass.func1
+         0     0%   100%        1MB  1.09%  bufio.NewReader (inline)
+         0     0%   100%        1MB  1.09%  bytes.(*Buffer).Write
+         0     0%   100%        1MB  1.09%  bytes.(*Buffer).grow
+         0     0%   100%     0.50MB  0.54%  compress/flate.(*decompressor).Read
+         0     0%   100%     0.50MB  0.54%  compress/flate.(*decompressor).nextBlock
+         0     0%   100%     0.50MB  0.54%  compress/flate.(*decompressor).readHuffman
+         0     0%   100%     0.50MB  0.54%  compress/gzip.(*Reader).Read
+         0     0%   100%     3.04MB  3.30%  compress/gzip.(*Reader).Reset
+         0     0%   100%     2.04MB  2.21%  compress/gzip.(*Reader).readHeader
+         0     0%   100%     0.50MB  0.54%  crypto.Hash.New
+         0     0%   100%        1MB  1.09%  crypto/elliptic.P256 (inline)
+         0     0%   100%        1MB  1.09%  crypto/elliptic.bigFromDecimal (inline)
+         0     0%   100%        1MB  1.09%  crypto/elliptic.initAll
+         0     0%   100%        1MB  1.09%  crypto/elliptic.initP521
+         0     0%   100%        1MB  1.09%  crypto/internal/fips140/hkdf.Expand[go.shape.interface { BlockSize int; Reset; Size int; Sum []uint8; Write  }]
+         0     0%   100%     0.50MB  0.54%  crypto/internal/fips140/hkdf.Extract[go.shape.interface { BlockSize int; Reset; Size int; Sum []uint8; Write  }]
+         0     0%   100%     0.50MB  0.54%  crypto/internal/fips140/tls13.(*HandshakeSecret).MasterSecret
+         0     0%   100%     0.50MB  0.54%  crypto/internal/fips140/tls13.(*MasterSecret).ServerApplicationTrafficSecret (inline)
+         0     0%   100%        1MB  1.09%  crypto/internal/fips140/tls13.ExpandLabel[go.shape.interface { BlockSize int; Reset; Size int; Sum []uint8; Write  }]
+         0     0%   100%     0.50MB  0.54%  crypto/internal/fips140/tls13.NewEarlySecret[go.shape.interface { BlockSize int; Reset; Size int; Sum []uint8; Write  }].func1
+         0     0%   100%     0.50MB  0.54%  crypto/internal/fips140/tls13.deriveSecret[go.shape.interface { BlockSize int; Reset; Size int; Sum []uint8; Write  }]
+         0     0%   100%     0.50MB  0.54%  crypto/internal/fips140/tls13.extract[go.shape.interface { BlockSize int; Reset; Size int; Sum []uint8; Write  }]
+         0     0%   100%     0.50MB  0.54%  crypto/sha256.New
+         0     0%   100%     2.50MB  2.72%  crypto/tls.(*Conn).HandshakeContext (inline)
+         0     0%   100%     2.50MB  2.72%  crypto/tls.(*Conn).clientHandshake
+         0     0%   100%     2.50MB  2.72%  crypto/tls.(*Conn).handshakeContext
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*Conn).setReadTrafficSecret
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*Conn).verifyServerCertificate
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*Conn).writeHandshakeRecord
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*cipherSuiteTLS13).trafficKey
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*clientHandshakeStateTLS13).establishHandshakeKeys
+         0     0%   100%        2MB  2.18%  crypto/tls.(*clientHandshakeStateTLS13).handshake
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*clientHandshakeStateTLS13).readServerCertificate
+         0     0%   100%        1MB  1.09%  crypto/tls.(*clientHandshakeStateTLS13).readServerFinished
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*clientHelloMsg).marshal
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*clientHelloMsg).marshalMsg
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*clientHelloMsg).marshalMsg.func14
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*clientHelloMsg).marshalMsg.func14.1
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*clientHelloMsg).marshalMsg.func14.1.1
+         0     0%   100%     0.50MB  0.54%  crypto/tls.(*halfConn).setTrafficSecret
+         0     0%   100%     0.50MB  0.54%  crypto/x509.(*Certificate).Verify
+         0     0%   100%     0.50MB  0.54%  crypto/x509.(*Certificate).systemVerify
+         0     0%   100%     0.50MB  0.54%  crypto/x509.ParseCertificate
+         0     0%   100%     0.50MB  0.54%  crypto/x509.exportCertificate
+         0     0%   100%     4.01MB  4.36%  database/sql.(*DB).QueryContext
+         0     0%   100%     4.01MB  4.36%  database/sql.(*DB).QueryContext.func1
+         0     0%   100%        1MB  1.09%  database/sql.(*DB).conn
+         0     0%   100%        1MB  1.09%  database/sql.(*DB).execDC
+         0     0%   100%        1MB  1.09%  database/sql.(*DB).execDC.func2
+         0     0%   100%     4.01MB  4.36%  database/sql.(*DB).query
+         0     0%   100%        4MB  4.35%  database/sql.(*DB).queryDC
+         0     0%   100%        4MB  4.35%  database/sql.(*DB).queryDC.func1
+         0     0%   100%     4.01MB  4.36%  database/sql.(*DB).retry
+         0     0%   100%     3.50MB  3.81%  database/sql.(*Rows).Next
+         0     0%   100%     3.50MB  3.81%  database/sql.(*Rows).Next.func1
+         0     0%   100%     1.50MB  1.63%  database/sql.(*Rows).Scan
+         0     0%   100%     0.50MB  0.54%  database/sql.(*Rows).awaitDone
+         0     0%   100%     3.50MB  3.81%  database/sql.(*Rows).nextLocked
+         0     0%   100%     1.50MB  1.63%  database/sql.(*Rows).scanLocked
+         0     0%   100%        1MB  1.09%  database/sql.(*Tx).ExecContext
+         0     0%   100%        1MB  1.09%  database/sql.(*Tx).QueryContext
+         0     0%   100%     1.50MB  1.63%  database/sql.convertAssignRows
+         0     0%   100%        1MB  1.09%  database/sql.ctxDriverExec
+         0     0%   100%        3MB  3.26%  database/sql.ctxDriverQuery
+         0     0%   100%     5.01MB  5.44%  database/sql.withLock
+         0     0%   100%     0.67MB  0.73%  encoding/gob.buildTypeInfo
+         0     0%   100%     0.67MB  0.73%  encoding/gob.getBaseType
+         0     0%   100%     0.67MB  0.73%  encoding/gob.getType
+         0     0%   100%     0.67MB  0.73%  encoding/gob.getTypeInfo
+         0     0%   100%     0.67MB  0.73%  encoding/gob.implementsInterface
+         0     0%   100%     0.67MB  0.73%  encoding/gob.init
+         0     0%   100%     0.67MB  0.73%  encoding/gob.mustGetTypeInfo
+         0     0%   100%     0.67MB  0.73%  encoding/gob.newTypeObject
+         0     0%   100%     0.67MB  0.73%  encoding/gob.userType
+         0     0%   100%     0.67MB  0.73%  encoding/gob.validUserType
+         0     0%   100%     9.05MB  9.85%  encoding/json.(*Decoder).Decode
+         0     0%   100%        1MB  1.09%  encoding/json.(*Encoder).Encode
+         0     0%   100%        6MB  6.53%  encoding/json.Unmarshal (inline)
+         0     0%   100%        1MB  1.09%  encoding/json/internal/jsonwire.AppendUnquote
+         0     0%   100%        1MB  1.09%  encoding/json/internal/jsonwire.UnquoteMayCopy
+         0     0%   100%     5.05MB  5.49%  encoding/json/jsontext.(*Decoder).ReadValue (inline)
+         0     0%   100%     5.05MB  5.49%  encoding/json/jsontext.(*decoderState).ReadValue
+         0     0%   100%     1.51MB  1.64%  encoding/json/jsontext.(*decoderState).consumeObject
+         0     0%   100%     1.51MB  1.64%  encoding/json/jsontext.(*decoderState).consumeString
+         0     0%   100%     1.51MB  1.64%  encoding/json/jsontext.(*decoderState).consumeValue
+         0     0%   100%     3.54MB  3.85%  encoding/json/jsontext.(*decoderState).consumeWhitespace
+         0     0%   100%    10.01MB 10.88%  encoding/json/v2.Unmarshal
+         0     0%   100%        6MB  6.53%  encoding/json/v2.makeInterfaceArshaler.func2
+         0     0%   100%    10.01MB 10.88%  encoding/json/v2.makePointerArshaler.func3
+         0     0%   100%        1MB  1.09%  encoding/json/v2.makeSliceArshaler.func3
+         0     0%   100%    10.01MB 10.88%  encoding/json/v2.makeStructArshaler.func3
+         0     0%   100%    10.01MB 10.88%  encoding/json/v2.unmarshalDecode
+         0     0%   100%     0.50MB  0.54%  github.com/ProtonMail/go-crypto/brainpool.P256r1 (inline)
+         0     0%   100%     0.50MB  0.54%  github.com/ProtonMail/go-crypto/brainpool.initAll
+         0     0%   100%     0.50MB  0.54%  github.com/ProtonMail/go-crypto/brainpool.initP384t1
+         0     0%   100%     1.50MB  1.63%  github.com/ProtonMail/go-crypto/openpgp/internal/ecc.init
+         0     0%   100%     0.50MB  0.54%  github.com/aws/aws-sdk-go-v2/service/s3/internal/endpoints.init
+         0     0%   100%     0.50MB  0.54%  github.com/bradleyfalzon/ghinstallation/v2.(*Transport).RoundTrip
+         0     0%   100%     0.50MB  0.55%  github.com/diggerhq/digger/backend/controllers.AutomergePRforBatchIfEnabled
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/backend/controllers.DiggerController.GithubAppWebHook.func4
+         0     0%   100%     9.03MB  9.82%  github.com/diggerhq/digger/backend/controllers.DiggerController.GithubAppWebHook.func5
+         0     0%   100%    13.52MB 14.70%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject
+         0     0%   100%     3.52MB  3.82%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func4
+         0     0%   100%     1.52MB  1.65%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func5
+         0     0%   100%     4.01MB  4.36%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func6
+         0     0%   100%    13.04MB 14.18%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func8
+         0     0%   100%     5.52MB  6.00%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func9
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/controllers.FindAccessPolicy
+         0     0%   100%     0.50MB  0.55%  github.com/diggerhq/digger/backend/controllers.GenerateChecksSummaryForBatch
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/backend/controllers.GetDiggerConfigForBranchOrSha
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/backend/controllers.GetDiggerConfigForBranchOrSha.func1
+         0     0%   100%     2.50MB  2.72%  github.com/diggerhq/digger/backend/controllers.GetDiggerConfigForBranchWithGracefulHandling
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/controllers.TriggerDiggerJobs
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/backend/controllers.UpdateCommentsForBatchGroup
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/controllers.findPolicy
+         0     0%   100%     5.01MB  5.45%  github.com/diggerhq/digger/backend/controllers.getDiggerConfigForPR
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/backend/controllers.handleIssueCommentEvent
+         0     0%   100%     9.03MB  9.82%  github.com/diggerhq/digger/backend/controllers.handlePullRequestEvent
+         0     0%   100%     0.51MB  0.56%  github.com/diggerhq/digger/backend/controllers.populatePolicyFieldsForJobs
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/controllers.recordDetectionRun
+         0     0%   100%     2.52MB  2.74%  github.com/diggerhq/digger/backend/logging.(*SentryHandler).Handle
+         0     0%   100%     2.02MB  2.19%  github.com/diggerhq/digger/backend/logging.(*SentryHandler).Handle.func2
+         0     0%   100%     3.02MB  3.28%  github.com/diggerhq/digger/backend/logging.(*contextAwareHandler).Handle
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/logging.Init.func2
+         0     0%   100%    34.62MB 37.64%  github.com/diggerhq/digger/backend/logging.Middleware.func1
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/logging.getGoroutineLogger
+         0     0%   100%    14.52MB 15.79%  github.com/diggerhq/digger/backend/middleware.AccessLevel.func1
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/middleware.CheckJobToken
+         0     0%   100%     0.50MB  0.55%  github.com/diggerhq/digger/backend/models.(*Database).AllImpactedProjectApplied
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/models.(*Database).CreateDetectionRun (inline)
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/models.(*Database).CreateDiggerBatch
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/models.(*Database).CreateDiggerJobToken
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/backend/models.(*Database).GetDiggerBatch
+         0     0%   100%     2.50MB  2.72%  github.com/diggerhq/digger/backend/models.(*Database).GetDiggerJob
+         0     0%   100%     0.52MB  0.56%  github.com/diggerhq/digger/backend/models.(*Database).GetDiggerJobParentLinksByParentId
+         0     0%   100%    13.53MB 14.72%  github.com/diggerhq/digger/backend/models.(*Database).GetDiggerJobsForBatch
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/models.(*Database).GetGithubAppInstallationByIdAndRepo
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/backend/models.(*Database).GetGithubAppInstallationLink
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/models.(*Database).GetGithubAppInstallations
+         0     0%   100%     0.50MB  0.55%  github.com/diggerhq/digger/backend/models.(*Database).GetImpactedProjects
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/models.(*Database).GetJobToken
+         0     0%   100%     1.51MB  1.64%  github.com/diggerhq/digger/backend/models.(*Database).UpdateBatchStatus
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/backend/models.(*Database).UpdateDiggerJob
+         0     0%   100%     4.50MB  4.90%  github.com/diggerhq/digger/backend/models.(*DiggerBatch).MapToJsonStruct
+         0     0%   100%     0.52MB  0.56%  github.com/diggerhq/digger/backend/services.DiggerJobCompleted
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/services.ScheduleJob
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/services.TriggerJob
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/utils.(*LoggingRoundTripper).RoundTrip
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/utils.(*SentrySlogWriter).Write
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/backend/utils.(*cachedInstallationTransport).RoundTrip
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/utils.ConvertJobsToDiggerJobs
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/backend/utils.GetGithubClient
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/backend/utils.GetGithubService
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/backend/utils.GetPrServiceFromBatch
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/utils.SetPRCheckForJobs
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/backend/utils.UpdateOrCreateSummaryComment
+         0     0%   100%     7.52MB  8.18%  github.com/diggerhq/digger/backend/utils.UpdatePRComment
+         0     0%   100%     7.52MB  8.18%  github.com/diggerhq/digger/backend/utils.UpdatePRCommentRealtime
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/libs/ci/github.GithubService.CreateCheckRun
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/libs/ci/github.GithubService.EditComment
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/libs/ci/github.GithubService.EditComment.func1
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/libs/ci/github.GithubService.GetBranchName
+         0     0%   100%     0.50MB  0.55%  github.com/diggerhq/digger/libs/ci/github.GithubService.GetChangedFiles
+         0     0%   100%     1.01MB  1.10%  github.com/diggerhq/digger/libs/ci/github.GithubService.IsMerged
+         0     0%   100%     8.54MB  9.29%  github.com/diggerhq/digger/libs/ci/github.GithubService.UpdateCheckRun
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/libs/comment_utils/latency.Start.func2
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/libs/digger_config.(*FileSystemTopLevelTerraformDirWalker).GetDirs
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/libs/digger_config.(*FileSystemTopLevelTerraformDirWalker).GetDirs.func1
+         0     0%   100%        1MB  1.09%  github.com/diggerhq/digger/libs/digger_config.GetFilesWithExtension
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/libs/digger_config.HandleYamlProjectGeneration
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/libs/digger_config.LoadDiggerConfig
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/libs/digger_config.LoadDiggerConfigYaml
+         0     0%   100%     2.50MB  2.72%  github.com/diggerhq/digger/libs/digger_config.LoadDiggerConfigYamlFromString
+         0     0%   100%        2MB  2.18%  github.com/diggerhq/digger/libs/git_utils.CloneGitRepoAndDoActionWithConfig
+         0     0%   100%     1.50MB  1.63%  github.com/diggerhq/digger/libs/git_utils.CloneGitRepoAndDoActionWithTimeout
+         0     0%   100%     0.50MB  0.54%  github.com/diggerhq/digger/libs/git_utils.readGitTimeout
+         0     0%   100%     2.52MB  2.74%  github.com/getsentry/sentry-go.(*Client).CaptureEvent (inline)
+         0     0%   100%     1.51MB  1.65%  github.com/getsentry/sentry-go.(*Client).CaptureException
+         0     0%   100%     0.50MB  0.55%  github.com/getsentry/sentry-go.(*Client).CaptureMessage
+         0     0%   100%     1.51MB  1.65%  github.com/getsentry/sentry-go.(*Client).prepareEvent
+         0     0%   100%     2.52MB  2.74%  github.com/getsentry/sentry-go.(*Client).processEvent
+         0     0%   100%     0.50MB  0.55%  github.com/getsentry/sentry-go.(*Hub).CaptureEvent
+         0     0%   100%     1.51MB  1.65%  github.com/getsentry/sentry-go.(*Hub).CaptureException
+         0     0%   100%     0.50MB  0.55%  github.com/getsentry/sentry-go.(*Hub).CaptureMessage
+         0     0%   100%     2.02MB  2.19%  github.com/getsentry/sentry-go.(*Hub).WithScope
+         0     0%   100%     0.50MB  0.55%  github.com/getsentry/sentry-go.(*Span).Finish (inline)
+         0     0%   100%     0.50MB  0.55%  github.com/getsentry/sentry-go.(*Span).doFinish
+         0     0%   100%     1.51MB  1.65%  github.com/getsentry/sentry-go.(*contextifyFramesIntegration).contextify
+         0     0%   100%     1.51MB  1.65%  github.com/getsentry/sentry-go.(*contextifyFramesIntegration).processor
+         0     0%   100%     1.01MB  1.10%  github.com/getsentry/sentry-go.(*sourceReader).readContextLines
+         0     0%   100%     1.51MB  1.65%  github.com/getsentry/sentry-go.CaptureException (inline)
+         0     0%   100%     0.50MB  0.55%  github.com/getsentry/sentry-go.CaptureMessage (inline)
+         0     0%   100%     2.02MB  2.19%  github.com/getsentry/sentry-go.WithScope (inline)
+         0     0%   100%        1MB  1.09%  github.com/getsentry/sentry-go.noopTransport.SendEvent
+         0     0%   100%    30.58MB 33.26%  github.com/getsentry/sentry-go/gin.(*handler).handle
+         0     0%   100%     0.50MB  0.55%  github.com/getsentry/sentry-go/gin.(*handler).handle.func1
+         0     0%   100%    30.58MB 33.26%  github.com/gin-contrib/sessions.Sessions.func1
+         0     0%   100%    34.62MB 37.64%  github.com/gin-gonic/gin.(*Context).Next (partial-inline)
+         0     0%   100%    34.62MB 37.64%  github.com/gin-gonic/gin.(*Engine).ServeHTTP
+         0     0%   100%    34.62MB 37.64%  github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+         0     0%   100%    34.62MB 37.64%  github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+         0     0%   100%    34.62MB 37.64%  github.com/gin-gonic/gin.LoggerWithConfig.func1
+         0     0%   100%     4.03MB  4.39%  github.com/gin-gonic/gin.WrapF.func1
+         0     0%   100%     0.51MB  0.55%  github.com/golang/protobuf/proto.RegisterType
+         0     0%   100%        1MB  1.09%  github.com/google/go-github/v61/github.(*ChecksService).CreateCheckRun
+         0     0%   100%     4.02MB  4.38%  github.com/google/go-github/v61/github.(*ChecksService).GetCheckRun
+         0     0%   100%     4.52MB  4.91%  github.com/google/go-github/v61/github.(*ChecksService).UpdateCheckRun
+         0     0%   100%        2MB  2.18%  github.com/google/go-github/v61/github.(*Client).BareDo
+         0     0%   100%    11.05MB 12.02%  github.com/google/go-github/v61/github.(*Client).Do
+         0     0%   100%     1.50MB  1.63%  github.com/google/go-github/v61/github.(*Client).NewRequest
+         0     0%   100%        6MB  6.53%  github.com/google/go-github/v61/github.(*Event).ParsePayload
+         0     0%   100%     0.50MB  0.55%  github.com/google/go-github/v61/github.(*IssuesService).EditComment
+         0     0%   100%     2.01MB  2.19%  github.com/google/go-github/v61/github.(*PullRequestsService).Get
+         0     0%   100%     0.50MB  0.55%  github.com/google/go-github/v61/github.(*PullRequestsService).ListFiles
+         0     0%   100%        6MB  6.53%  github.com/google/go-github/v61/github.ParseWebHook
+         0     0%   100%     8.06MB  8.76%  github.com/google/go-github/v61/github.ValidatePayload
+         0     0%   100%     8.06MB  8.76%  github.com/google/go-github/v61/github.ValidatePayloadFromBody
+         0     0%   100%     0.50MB  0.54%  github.com/google/go-github/v61/github.newResponse
+         0     0%   100%     0.50MB  0.54%  github.com/google/go-github/v61/github.parseRate
+         0     0%   100%     0.50MB  0.54%  github.com/google/go-github/v61/github.withContext (inline)
+         0     0%   100%     0.51MB  0.55%  github.com/googleapis/gnostic/OpenAPIv2.init.0
+         0     0%   100%     0.52MB  0.56%  github.com/hashicorp/go-version.NewVersion (inline)
+         0     0%   100%     0.52MB  0.56%  github.com/hashicorp/go-version.newVersion
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.(*Conn).Exec
+         0     0%   100%        2MB  2.18%  github.com/jackc/pgx/v5.(*Conn).Query
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.(*Conn).exec
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.(*Conn).execPrepared
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.(*ExtendedQueryBuilder).Build
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.(*ExtendedQueryBuilder).appendParam
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.(*ExtendedQueryBuilder).encodeExtendedParamValue
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.ConnectConfig
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5.connect
+         0     0%   100%     0.50MB  0.55%  github.com/jackc/pgx/v5/internal/iobufpool.Get
+         0     0%   100%     1.50MB  1.63%  github.com/jackc/pgx/v5/pgconn.(*PgConn).ExecPrepared
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/pgconn.(*PgConn).execExtendedSuffix
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/pgconn.(*ResultReader).readUntilRowDescription
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/pgconn.(*ResultReader).receiveMessage
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/pgconn.ConnectConfig
+         0     0%   100%     0.50MB  0.55%  github.com/jackc/pgx/v5/pgconn.ParseConfigWithOptions.func1
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/pgconn.connectOne
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/pgconn.connectPreferred
+         0     0%   100%     0.50MB  0.54%  github.com/jackc/pgx/v5/pgproto3.(*Frontend).SendBind
+         0     0%   100%     0.50MB  0.55%  github.com/jackc/pgx/v5/pgproto3.NewFrontend
+         0     0%   100%     0.50MB  0.55%  github.com/jackc/pgx/v5/pgproto3.newChunkReader (inline)
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/pgtype.(*Map).Encode
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/stdlib.(*Conn).ExecContext
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/stdlib.(*Rows).Next.func13
+         0     0%   100%     0.50MB  0.54%  github.com/jackc/pgx/v5/stdlib.(*Rows).Next.func2
+         0     0%   100%        1MB  1.09%  github.com/jackc/pgx/v5/stdlib.connector.Connect
+         0     0%   100%     0.52MB  0.56%  github.com/jinzhu/inflection.Plural
+         0     0%   100%     0.52MB  0.56%  github.com/terraform-linters/tflint/tflint.init
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*File).lazyInit (inline)
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*File).lazyInitOnce
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*File).lazyRawInit
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*File).unmarshalFull
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*Message).Fields
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/filedesc.(*Message).lazyInit (inline)
+         0     0%   100%     0.51MB  0.55%  google.golang.org/protobuf/internal/filedesc.Builder.Build
+         0     0%   100%     0.51MB  0.55%  google.golang.org/protobuf/internal/filedesc.newRawFile
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/impl.(*MessageInfo).init (inline)
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/impl.(*MessageInfo).initOnce
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/impl.(*MessageInfo).makeKnownFieldsFunc
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/impl.(*MessageInfo).makeReflectFuncs
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/internal/impl.(*messageState).ProtoMethods
+         0     0%   100%     0.51MB  0.55%  google.golang.org/protobuf/internal/impl.Export.LegacyMessageTypeOf
+         0     0%   100%     0.51MB  0.55%  google.golang.org/protobuf/internal/impl.legacyLoadFileDesc
+         0     0%   100%     0.51MB  0.55%  google.golang.org/protobuf/internal/impl.legacyLoadMessageDesc
+         0     0%   100%     0.51MB  0.55%  google.golang.org/protobuf/internal/impl.legacyLoadMessageInfo
+         0     0%   100%     0.51MB  0.55%  google.golang.org/protobuf/internal/impl.legacyLoadMessageType
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/proto.Unmarshal
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/proto.UnmarshalOptions.unmarshal
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/proto.protoMethods (inline)
+         0     0%   100%     0.50MB  0.55%  google.golang.org/protobuf/reflect/protodesc.init.0
+         0     0%   100%     2.50MB  2.72%  gopkg.in/yaml%2ev3.(*parser).document
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.(*parser).expect
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.(*parser).init (inline)
+         0     0%   100%     2.50MB  2.72%  gopkg.in/yaml%2ev3.(*parser).mapping
+         0     0%   100%        3MB  3.26%  gopkg.in/yaml%2ev3.(*parser).parse
+         0     0%   100%     2.50MB  2.72%  gopkg.in/yaml%2ev3.(*parser).parseChild (inline)
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.(*parser).peek
+         0     0%   100%        1MB  1.09%  gopkg.in/yaml%2ev3.(*parser).sequence
+         0     0%   100%        3MB  3.26%  gopkg.in/yaml%2ev3.Unmarshal (inline)
+         0     0%   100%        1MB  1.09%  gopkg.in/yaml%2ev3.peek_token
+         0     0%   100%        3MB  3.26%  gopkg.in/yaml%2ev3.unmarshal
+         0     0%   100%        1MB  1.09%  gopkg.in/yaml%2ev3.yaml_parser_fetch_more_tokens
+         0     0%   100%        1MB  1.09%  gopkg.in/yaml%2ev3.yaml_parser_fetch_next_token
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.yaml_parser_fetch_plain_scalar
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.yaml_parser_fetch_value
+         0     0%   100%        1MB  1.09%  gopkg.in/yaml%2ev3.yaml_parser_parse
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.yaml_parser_parse_block_mapping_key
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.yaml_parser_parse_stream_start
+         0     0%   100%     0.50MB  0.54%  gopkg.in/yaml%2ev3.yaml_parser_scan_plain_scalar
+         0     0%   100%        1MB  1.09%  gopkg.in/yaml%2ev3.yaml_parser_state_machine
+         0     0%   100%     0.50MB  0.54%  gorm.io/driver/postgres.Dialector.QuoteTo
+         0     0%   100%     1.50MB  1.63%  gorm.io/gorm.(*DB).Create
+         0     0%   100%    21.06MB 22.90%  gorm.io/gorm.(*DB).Find
+         0     0%   100%        1MB  1.09%  gorm.io/gorm.(*DB).First
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm.(*DB).Model (inline)
+         0     0%   100%        4MB  4.35%  gorm.io/gorm.(*DB).Save
+         0     0%   100%        1MB  1.09%  gorm.io/gorm.(*DB).Session
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm.(*DB).Take
+         0     0%   100%     3.50MB  3.81%  gorm.io/gorm.(*DB).Where
+         0     0%   100%     1.50MB  1.63%  gorm.io/gorm.(*DB).scanIntoStruct
+         0     0%   100%        1MB  1.09%  gorm.io/gorm.(*Statement).Build
+         0     0%   100%     1.52MB  1.65%  gorm.io/gorm.(*Statement).Parse (inline)
+         0     0%   100%     1.52MB  1.65%  gorm.io/gorm.(*Statement).ParseWithSpecialTableName
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm.(*Statement).QuoteTo
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm.(*Statement).QuoteTo.func1 (inline)
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm.(*Statement).WriteQuoted
+         0     0%   100%     1.50MB  1.63%  gorm.io/gorm/callbacks.Create.func1
+         0     0%   100%    10.51MB 11.42%  gorm.io/gorm/callbacks.Preload
+         0     0%   100%    16.04MB 17.45%  gorm.io/gorm/callbacks.Query
+         0     0%   100%        1MB  1.09%  gorm.io/gorm/callbacks.SaveBeforeAssociations.func1
+         0     0%   100%     2.50MB  2.72%  gorm.io/gorm/callbacks.Update.func1
+         0     0%   100%     9.50MB 10.34%  gorm.io/gorm/callbacks.preload
+         0     0%   100%        1MB  1.09%  gorm.io/gorm/callbacks.preloadDB
+         0     0%   100%     9.50MB 10.34%  gorm.io/gorm/callbacks.preloadEntryPoint
+         0     0%   100%        1MB  1.09%  gorm.io/gorm/callbacks.saveAssociations
+         0     0%   100%        1MB  1.09%  gorm.io/gorm/clause.Clause.Build
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm/schema.(*Schema).MakeSlice
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm/schema.(*Schema).parseRelation
+         0     0%   100%     0.52MB  0.56%  gorm.io/gorm/schema.NamingStrategy.TableName
+         0     0%   100%        1MB  1.09%  gorm.io/gorm/schema.Parse (inline)
+         0     0%   100%        1MB  1.09%  gorm.io/gorm/schema.getOrParse
+         0     0%   100%     0.50MB  0.54%  gorm.io/gorm/schema.init
+         0     0%   100%     0.50MB  0.54%  k8s.io/klog.(*loggingT).flushDaemon
+         0     0%   100%        1MB  1.09%  log.(*Logger).Println (inline)
+         0     0%   100%        1MB  1.09%  log.(*Logger).output
+         0     0%   100%     0.50MB  0.54%  log/slog.(*JSONHandler).Handle
+         0     0%   100%     3.02MB  3.28%  log/slog.(*Logger).log
+         0     0%   100%     0.50MB  0.54%  log/slog.(*commonHandler).handle
+         0     0%   100%     0.50MB  0.54%  log/slog.(*handleState).appendAttr
+         0     0%   100%     0.50MB  0.55%  log/slog.Error (inline)
+         0     0%   100%        1MB  1.09%  log/slog.Info (inline)
+         0     0%   100%     1.51MB  1.65%  log/slog.Warn (inline)
+         0     0%   100%     1.50MB  1.63%  math/big.(*Int).SetString
+         0     0%   100%     1.50MB  1.63%  math/big.(*Int).scan
+         0     0%   100%     1.50MB  1.63%  math/big.(*Int).setFromScanner
+         0     0%   100%        1MB  1.09%  math/big.nat.mulAddWW
+         0     0%   100%     0.50MB  0.54%  math/big.nat.setWord (inline)
+         0     0%   100%     0.50MB  0.54%  net.(*Dialer).DialContext
+         0     0%   100%        1MB  1.09%  net/http.(*Client).Do (inline)
+         0     0%   100%        1MB  1.09%  net/http.(*Client).do
+         0     0%   100%     0.50MB  0.54%  net/http.(*Client).makeHeadersCopier
+         0     0%   100%     0.50MB  0.54%  net/http.(*Client).send
+         0     0%   100%     0.50MB  0.54%  net/http.(*conn).readRequest
+         0     0%   100%    35.12MB 38.19%  net/http.(*conn).serve
+         0     0%   100%     2.50MB  2.72%  net/http.(*persistConn).addTLS.func2
+         0     0%   100%     0.50MB  0.54%  net/http.Header.Get (inline)
+         0     0%   100%     0.50MB  0.54%  net/http.Header.Set (inline)
+         0     0%   100%     0.50MB  0.54%  net/http.cloneOrMakeHeader
+         0     0%   100%     0.50MB  0.54%  net/http.readRequestLimit
+         0     0%   100%     0.50MB  0.54%  net/http.send
+         0     0%   100%    34.62MB 37.64%  net/http.serverHandler.ServeHTTP
+         0     0%   100%     2.50MB  2.72%  net/http/internal/http2.(*ClientConn).readLoop
+         0     0%   100%        2MB  2.18%  net/http/internal/http2.(*Framer).ReadFrame
+         0     0%   100%        2MB  2.18%  net/http/internal/http2.(*Framer).ReadFrameForHeader
+         0     0%   100%     0.50MB  0.54%  net/http/internal/http2.(*clientConnReadLoop).processData
+         0     0%   100%     2.50MB  2.72%  net/http/internal/http2.(*clientConnReadLoop).run
+         0     0%   100%     0.50MB  0.54%  net/http/internal/http2.(*dataBuffer).Write
+         0     0%   100%     0.50MB  0.54%  net/http/internal/http2.(*dataBuffer).lastChunkOrAlloc
+         0     0%   100%     3.54MB  3.85%  net/http/internal/http2.(*gzipReader).Read
+         0     0%   100%     3.04MB  3.30%  net/http/internal/http2.(*gzipReader).acquire
+         0     0%   100%     0.50MB  0.54%  net/http/internal/http2.(*pipe).Write
+         0     0%   100%     0.50MB  0.54%  net/http/internal/http2.getDataBufferChunk
+         0     0%   100%     3.04MB  3.30%  net/http/internal/http2.gzipPoolGet
+         0     0%   100%     1.72MB  1.87%  net/http/pprof.Profile
+         0     0%   100%     2.31MB  2.52%  net/http/pprof.Trace
+         0     0%   100%     0.50MB  0.54%  net/textproto.CanonicalMIMEHeaderKey
+         0     0%   100%     0.50MB  0.54%  net/textproto.MIMEHeader.Get
+         0     0%   100%        1MB  1.09%  os.(*File).ReadDir
+         0     0%   100%     0.50MB  0.54%  os.Open (inline)
+         0     0%   100%     0.50MB  0.54%  os.OpenFile
+         0     0%   100%        1MB  1.09%  os.ReadDir
+         0     0%   100%     1.01MB  1.10%  os.ReadFile
+         0     0%   100%     0.50MB  0.54%  os.openFileNolog
+         0     0%   100%     1.50MB  1.63%  path/filepath.Walk
+         0     0%   100%     0.50MB  0.54%  path/filepath.readDirNames
+         0     0%   100%     1.50MB  1.63%  path/filepath.walk
+         0     0%   100%     0.67MB  0.73%  reflect.(*rtype).ptrTo
+         0     0%   100%     3.03MB  3.30%  reflect.MakeSlice
+         0     0%   100%     8.50MB  9.25%  reflect.New
+         0     0%   100%     0.67MB  0.73%  reflect.PointerTo (inline)
+         0     0%   100%     0.50MB  0.54%  reflect.Value.Interface (inline)
+         0     0%   100%     0.50MB  0.54%  reflect.packEface (inline)
+         0     0%   100%     0.50MB  0.54%  reflect.packEfaceData
+         0     0%   100%     0.67MB  0.73%  reflect.typesByString
+         0     0%   100%     0.50MB  0.54%  reflect.valueInterface
+         0     0%   100%     0.52MB  0.56%  regexp.(*Regexp).FindStringSubmatch
+         0     0%   100%     0.52MB  0.56%  regexp.(*Regexp).MatchString (inline)
+         0     0%   100%     1.03MB  1.12%  regexp.(*Regexp).backtrack
+         0     0%   100%     0.52MB  0.56%  regexp.(*Regexp).doMatch (inline)
+         0     0%   100%     1.03MB  1.12%  regexp.(*Regexp).find
+         0     0%   100%        1MB  1.09%  regexp.Compile (inline)
+         0     0%   100%        1MB  1.09%  regexp.MustCompile
+         0     0%   100%        1MB  1.09%  regexp.compile
+         0     0%   100%     0.50MB  0.54%  regexp.compileOnePass
+         0     0%   100%     0.50MB  0.54%  regexp.makeOnePass
+         0     0%   100%     0.50MB  0.54%  regexp/syntax.(*compiler).init (inline)
+         0     0%   100%     0.50MB  0.54%  regexp/syntax.Compile
+         0     0%   100%        2MB  2.18%  runtime.(*traceAdvancerState).start.func1
+         0     0%   100%        2MB  2.18%  runtime.(*traceStackTable).dump
+         0     0%   100%     0.50MB  0.54%  runtime.CallersFrames (inline)
+         0     0%   100%     0.50MB  0.54%  runtime.acquireSudog
+         0     0%   100%     1.50MB  1.63%  runtime.allocm
+         0     0%   100%     7.20MB  7.83%  runtime.doInit (inline)
+         0     0%   100%     7.20MB  7.83%  runtime.doInit1
+         0     0%   100%        2MB  2.18%  runtime.dumpStacksRec
+         0     0%   100%     0.50MB  0.54%  runtime.gcBgMarkWorker
+         0     0%   100%     0.50MB  0.54%  runtime.gcMarkDone
+         0     0%   100%     7.20MB  7.83%  runtime.main
+         0     0%   100%        2MB  2.18%  runtime.makeTraceFrames
+         0     0%   100%     1.50MB  1.63%  runtime.makeslice
+         0     0%   100%     0.50MB  0.54%  runtime.malg
+         0     0%   100%     0.50MB  0.54%  runtime.mcall
+         0     0%   100%        1MB  1.09%  runtime.mstart
+         0     0%   100%        1MB  1.09%  runtime.mstart0
+         0     0%   100%        1MB  1.09%  runtime.mstart1
+         0     0%   100%     1.50MB  1.63%  runtime.newm
+         0     0%   100%     3.51MB  3.82%  runtime.newobject
+         0     0%   100%     0.50MB  0.54%  runtime.newproc.func1
+         0     0%   100%     0.50MB  0.54%  runtime.newproc1
+         0     0%   100%     0.50MB  0.54%  runtime.park_m
+         0     0%   100%     0.51MB  0.55%  runtime.procresize
+         0     0%   100%     1.50MB  1.63%  runtime.resetspinning
+         0     0%   100%     0.51MB  0.55%  runtime.rt0_go
+         0     0%   100%     0.51MB  0.55%  runtime.schedinit
+         0     0%   100%     1.50MB  1.63%  runtime.schedule
+         0     0%   100%     0.50MB  0.54%  runtime.semacquire (inline)
+         0     0%   100%     0.50MB  0.54%  runtime.semacquire1
+         0     0%   100%     1.50MB  1.63%  runtime.startm
+         0     0%   100%     0.50MB  0.54%  runtime.systemstack
+         0     0%   100%        2MB  2.18%  runtime.traceAdvance
+         0     0%   100%     1.50MB  1.63%  runtime.wakep
+         0     0%   100%     2.31MB  2.52%  runtime/trace.(*traceMultiplexer).addedSubscriber
+         0     0%   100%     2.31MB  2.52%  runtime/trace.(*traceMultiplexer).subscribeTraceStartWriter
+         0     0%   100%     2.31MB  2.52%  runtime/trace.Start (inline)
+         0     0%   100%        1MB  1.09%  strings.(*Builder).Grow
+         0     0%   100%        1MB  1.09%  strings.(*Builder).grow
+         0     0%   100%        2MB  2.18%  sync.(*Once).Do (inline)
+         0     0%   100%        2MB  2.18%  sync.(*Once).doSlow
+         0     0%   100%        1MB  1.09%  sync.(*Pool).Get
+         0     0%   100%     0.50MB  0.54%  sync.(*Pool).pin
+         0     0%   100%     0.50MB  0.54%  vendor/golang.org/x/crypto/cryptobyte.(*Builder).AddBytes (inline)
+         0     0%   100%     0.50MB  0.54%  vendor/golang.org/x/crypto/cryptobyte.(*Builder).AddUint16LengthPrefixed (inline)
+         0     0%   100%     0.50MB  0.54%  vendor/golang.org/x/crypto/cryptobyte.(*Builder).addLengthPrefixed
+         0     0%   100%     0.50MB  0.54%  vendor/golang.org/x/crypto/cryptobyte.(*Builder).callContinuation
+         0     0%   100%     1.50MB  1.63%  vendor/golang.org/x/net/http2/hpack.(*Decoder).Write
+         0     0%   100%        1MB  1.09%  vendor/golang.org/x/net/http2/hpack.(*Decoder).callEmit
+         0     0%   100%     1.50MB  1.63%  vendor/golang.org/x/net/http2/hpack.(*Decoder).parseFieldLiteral
+         0     0%   100%     1.50MB  1.63%  vendor/golang.org/x/net/http2/hpack.(*Decoder).parseHeaderFieldRepr

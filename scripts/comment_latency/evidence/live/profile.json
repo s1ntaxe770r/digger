@@ -1,0 +1,13 @@
+{
+  "started_at": "2026-10-10T01:12:54.157758+00:00",
+  "finished_at": "2026-10-10T01:14:54.209551+00:00",
+  "runs": [
+    38012313952,
+    38012317603,
+    38012315744
+  ],
+  "excluded_comments": [
+    "6092045564"
+  ],
+  "purpose": "Separate diagnostic workload; CPU and runtime trace enabled, excluded from latency comparison"
+}

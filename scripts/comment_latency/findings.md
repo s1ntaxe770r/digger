@@ -1,53 +1,43 @@
-# Findings
+# Comment latency findings
 
-The reported post-workflow delay is **not yet verified**. Docker and authenticated GitHub access were restored on 2026-10-10. The local backend now runs with PostgreSQL and passes health/setup/browser checks. A dedicated test GitHub App is now installed on all three fixtures, and its webhook successfully synced them into the local backend. A local renderer optimization is measured below; it does not establish the cause of the reported delay.
+The reported post-workflow delay is **not confirmed by this sample**. Thirty usable workflows succeeded: 11 summary rows were confirmed final before workflow completion; 19 had overlapping polling bounds. No reversions were observed during the ten-second stability window. Short delays within those bounds remain possible.
 
-## Synthetic utility benchmark (inactive in the live CLI)
+[Report and graphs](evidence/live/report.html) · [raw observations and summary](evidence/live/comparison.json) · [local runbook](README.md)
 
-`summary.GetCommentUpdater` returns `NoopCommentUpdater`, so this utility optimization does not affect the tested live summary path. Replaced repeated summary-string concatenation with `strings.Builder`. Exact-output checks preserve aliases, statuses, URLs and the 65,536-byte truncation behavior.
+## Measured before / after
 
-| Synthetic jobs | Before median | After median | Change |
-|---:|---:|---:|---:|
-| 10 | 0.0104 ms | 0.0096 ms | −7.6% |
-| 100 | 0.1127 ms | 0.0692 ms | −38.6% |
-| 1,000 | 4.6396 ms | 0.6587 ms | −85.8% |
+Five batches per phase, three projects per batch, same test PR and pinned CLI. The candidate caches GitHub installation transports, allowing the library to reuse and refresh installation tokens.
 
-Five samples per case and revision, Go 1.27.0 on Apple M3 Pro, instrumentation disabled, no GitHub/database calls. At 1,000 jobs, allocation fell from **54.9 MB to 3.07 MB per operation** (−94.4%). These are descriptive local benchmarks, not production latency or statistical confidence claims.
+| Backend measurement | Before median | After median | Change |
+|---|---:|---:|---:|
+| Final-status summary update | 1,455.741 ms | 966.360 ms | −489.381 ms / −33.6% |
+| Client setup | 426.986 ms | 0.982 ms | −99.8% |
+| GitHub summary edit | 992.358 ms | 970.483 ms | −2.2% |
 
-[Graph](evidence/synthetic-render.svg) · [full table](evidence/synthetic-render.md) · [before samples](evidence/before.txt) · [after samples](evidence/after.txt).
+Final-update totals have 15 samples per phase. Component timings have 30 and include running/final updates: batch-only correlation cannot safely separate overlapping child spans. These inclusive measurements must not be added. Rendering was below 0.1 ms median; database stages were a few milliseconds. GitHub edit time remains the main measured cost.
 
-Separate allocation profiles moved the largest allocation share from the updater itself (95.2% before) to job-spec decoding (78.0% after). Compare per-operation benchmark bytes above, not total profile allocations: the faster version executes more iterations. [Before allocation profile](evidence/before.mem.txt) · [after](evidence/after.mem.txt).
+This reduces backend update work; it does **not** establish a fix for a post-workflow delay. Serial batches, shared jobs, API variability and some baseline compilation overlap limit causal percentage claims. Browser refresh, overlapping batches and production load were not tested.
 
-## Live path and candidate
+## Implementation and checks
 
-The backend writes summary comments from independent asynchronous updates. The CLI summary provider returns a no-op updater; earlier claims of competing CLI/backend summary writers were incorrect for this path.
+Cache keys isolate App, installation and private key. The existing library handles synchronized token refresh; HTTP 401 invalidates the entry for subsequent clients. No automatic retry or workflow-result change. Entries remain until invalidation/process exit; the cache has no size bound.
 
-The first three successful workflows had final summary rows before completion, with no reversions. Six backend updates spent a median 447 ms creating an installation client, 1,072 ms editing the summary, and 0.080 ms rendering it. The inclusive update total was 1,532 ms. These nested stages must not be summed.
+Focused tests and race checks pass for concurrent reuse, identity/key isolation, expiry, revocation and a late 401 from an old transport. Sixteen Python observer/report tests pass. The existing GitHub suite passes with `CI=true`; its installation-specific 388-repository test is skipped.
 
-The candidate reuses GitHub installation transports so the library can retain and refresh its token. Cache keys isolate App, installation and private key; HTTP 401 invalidates the entry for the next client. Repeated baseline and candidate runs are in progress. Polling overlaps remain inconclusive; late observations are excluded from delay estimates.
+The CLI summary provider returns `NoopCommentUpdater`. Earlier claims of competing CLI/backend summary writers were incorrect for this path. The separate [synthetic renderer benchmark](evidence/synthetic-render.md) measures inactive utility code and contributes none of the live gain. Backend asynchronous writers remain unsynchronized.
 
-## Delivered
+## Workload profile
 
-- Opt-in Go timing for status requests, realtime client/database/render/update stages, CLI summary rendering/editing, and GitHub comment PATCH calls.
-- Read-only workflow/comment observer with attempt checks, polling bounds and reversion detection.
-- Offline comparison report and standalone timing graph generation.
-- Scoped local Compose setup and commands in [README.md](README.md).
-- Renderer optimization with exact-output regression tests and separate profiling runs.
+A separate successful three-workflow batch captured 120 seconds of CPU/runtime activity: **550 ms of CPU samples (0.46%)**, too sparse to establish a CPU hotspot. [CPU summary](evidence/live/cpu-top.txt) and [trace network waits](evidence/live/network-wait-top.txt) include profiling overhead and idle/concurrent waits; aggregate waits are not request latency. The [91.96 MB allocation profile](evidence/live/allocation-top.txt) covers process lifetime, not one batch or retained memory.
 
-## Validation
+## Evidence and remaining scope
 
-- 16 Python tests pass.
-- Go timing-helper and summary timing/output regression tests pass.
-- Affected library packages and backend/CLI caller packages compile.
-- After permissions were restored, timing and summary packages pass. The GitHub suite passes with `CI=true`; the existing test requiring a specific App installation and exactly 388 repositories is skipped. Without CI, missing `GITHUB_APP_ID` still prevents that test.
+Three late baseline observations are retained but excluded. A separate diagnostic batch captures CPU/runtime profiles and is excluded from the comparison. Raw logs, credentials and profiles stay in ignored local results; published records contain timings and correlation IDs.
 
-## Outstanding
+Fixture `929d9580`, workflow `d952ef95`, CLI `c1962300`; backend before `c1962300`, after `6de55a67`. Existing `terragrun-test` PR 21, plans only. Later batches replay its signed synchronize event through the local test tunnel; Actions, callbacks and comment writes are real. The before CLI reverses the inactive renderer patch; after retains it.
 
-- GitHub integration tests with test App credentials configured.
-- Existing PR 21 now maps to real test Actions runs and summary rows. Confirmed management repos: `s1ntaxe770r/digger-small-management-repo` and `s1ntaxe770r/digger-heavy-management-repo`.
-- Repeated baseline and candidate fixture runs are underway; the Docker backend image build was stopped during dependency downloads.
-- Compare the transport cache on equivalent live runs and produce timing graphs. Small/heavy management-policy runs require an EE test license; none has been supplied.
+**Still blocked:** small/heavy management-policy scenarios need an EE test license. The dedicated App is installed on all three fixtures. These scenarios remain incomplete; use the same instrumentation on an actual delayed run before changing write ordering or error behavior.
 
-No PRs created. Instrumentation does not guarantee distributed write ordering.
+Branch: `perf/action-comment-latency`. No PR created. Local setup video: [backend-setup.webm](results/local-startup/backend-setup.webm).
 
-Local startup evidence: `results/local-startup/` contains migration/build/server logs, fixture revisions, source hashes, Chromium screenshot/video and the smoke-test result. The backend binds only to loopback; the scoped tunnel routes test webhooks and authenticated job callbacks.
+[Health/report recording](results/local-startup/live-review.webm) · [report screenshot](results/local-startup/live-report.png).

@@ -139,4 +139,16 @@ func TestInstallationTokenRefreshAndRevocation(t *testing.T) {
 	if got := requests.Load(); got != 3 {
 		t.Fatalf("token requests after revocation = %d, want 3", got)
 	}
+	response, err = transport.RoundTrip(request)
+	if err != nil {
+		t.Fatal(err)
+	}
+	response.Body.Close()
+	current, err := getInstallationTransport(1, 42, key)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if current != replacement {
+		t.Fatal("a late 401 from the old transport evicted its replacement")
+	}
 }

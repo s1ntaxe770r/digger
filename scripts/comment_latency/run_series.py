@@ -38,9 +38,10 @@ def wait_for_jobs(job_ids):
         if len(finished) == len(job_ids):
             for marker, summary in finished:
                 log_path = output / f"{marker['run']}-cli.log"
-                with log_path.open('w') as log:
-                    subprocess.run(['gh', 'run', 'view', str(marker['run']), '--repo', 's1ntaxe770r/terragrun-test', '--log'], stdout=log, check=True)
-                log_path.chmod(0o600)
+                if not log_path.exists():
+                    with log_path.open('w') as log:
+                        subprocess.run(['gh', 'run', 'view', str(marker['run']), '--repo', 's1ntaxe770r/terragrun-test', '--log'], stdout=log, check=True)
+                    log_path.chmod(0o600)
                 print(json.dumps({'run': marker['run'], **summary}), flush=True)
             if any(s['conclusion'] != 'success' for _, s in finished):
                 raise SystemExit('A workflow failed; retained evidence and stopped the series')

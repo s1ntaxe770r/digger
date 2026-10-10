@@ -1,0 +1,230 @@
+File: backend-cached
+Type: cpu
+Time: 2026-10-10 02:12:54 WAT
+Duration: 120.01s, Total samples = 550ms ( 0.46%)
+Showing nodes accounting for 550ms, 100% of 550ms total
+      flat  flat%   sum%        cum   cum%
+     100ms 18.18% 18.18%      100ms 18.18%  runtime.kevent
+      90ms 16.36% 34.55%       90ms 16.36%  syscall.rawsyscalln
+      80ms 14.55% 49.09%       80ms 14.55%  runtime.pthread_cond_wait
+      70ms 12.73% 61.82%       70ms 12.73%  runtime.pthread_cond_signal
+      20ms  3.64% 65.45%       20ms  3.64%  internal/runtime/atomic.(*UnsafePointer).Load (inline)
+      20ms  3.64% 69.09%       20ms  3.64%  runtime.(*traceMap).newTraceMapNode
+      20ms  3.64% 72.73%       20ms  3.64%  runtime.madvise
+      20ms  3.64% 76.36%       20ms  3.64%  runtime.memequal
+      20ms  3.64% 80.00%       20ms  3.64%  runtime.munmap
+      20ms  3.64% 83.64%       20ms  3.64%  runtime.step
+      10ms  1.82% 85.45%       10ms  1.82%  encoding/json/v2.makeStructArshaler.func2
+      10ms  1.82% 87.27%       10ms  1.82%  internal/sync.(*HashTrieMap[go.shape.interface {},go.shape.interface {}]).Load
+      10ms  1.82% 89.09%       20ms  3.64%  runtime.(*Frames).Next
+      10ms  1.82% 90.91%       10ms  1.82%  runtime.(*spanQueue).tryDrain
+      10ms  1.82% 92.73%       10ms  1.82%  runtime.add (inline)
+      10ms  1.82% 94.55%       30ms  5.45%  runtime.fpunwindExpand
+      10ms  1.82% 96.36%       10ms  1.82%  runtime.memclrNoHeapPointers
+      10ms  1.82% 98.18%       10ms  1.82%  runtime.runqgrab
+      10ms  1.82%   100%       20ms  3.64%  runtime.tryDeferToSpanScan
+         0     0%   100%       10ms  1.82%  _.goready.func1
+         0     0%   100%       10ms  1.82%  database/sql.(*DB).BeginTx
+         0     0%   100%       10ms  1.82%  database/sql.(*DB).BeginTx.func1
+         0     0%   100%       40ms  7.27%  database/sql.(*DB).QueryContext
+         0     0%   100%       40ms  7.27%  database/sql.(*DB).QueryContext.func1
+         0     0%   100%       10ms  1.82%  database/sql.(*DB).begin
+         0     0%   100%       10ms  1.82%  database/sql.(*DB).conn
+         0     0%   100%       40ms  7.27%  database/sql.(*DB).query
+         0     0%   100%       50ms  9.09%  database/sql.(*DB).queryDC
+         0     0%   100%       50ms  9.09%  database/sql.(*DB).queryDC.func1
+         0     0%   100%       50ms  9.09%  database/sql.(*DB).retry
+         0     0%   100%       10ms  1.82%  database/sql.(*Tx).QueryContext
+         0     0%   100%       10ms  1.82%  database/sql.(*driverConn).resetSession
+         0     0%   100%       50ms  9.09%  database/sql.ctxDriverQuery
+         0     0%   100%       50ms  9.09%  database/sql.withLock
+         0     0%   100%       10ms  1.82%  encoding/json.(*Encoder).Encode
+         0     0%   100%       10ms  1.82%  encoding/json.Unmarshal (inline)
+         0     0%   100%       10ms  1.82%  encoding/json/v2.MarshalEncode
+         0     0%   100%       10ms  1.82%  encoding/json/v2.Unmarshal
+         0     0%   100%       10ms  1.82%  encoding/json/v2.makeInterfaceArshaler.func2
+         0     0%   100%       10ms  1.82%  encoding/json/v2.makePointerArshaler.func2
+         0     0%   100%       10ms  1.82%  encoding/json/v2.makeSliceArshaler.func2
+         0     0%   100%       10ms  1.82%  encoding/json/v2.marshalEncode
+         0     0%   100%       10ms  1.82%  encoding/json/v2.newAddressableValue
+         0     0%   100%       10ms  1.82%  encoding/json/v2.unmarshalDecode
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/controllers.AutomergePRforBatchIfEnabled
+         0     0%   100%       40ms  7.27%  github.com/diggerhq/digger/backend/controllers.DiggerController.GithubAppWebHook
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/controllers.DiggerController.GithubAppWebHook.func5
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func6
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func8
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/controllers.DiggerController.SetJobStatusForProject.func9
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/controllers.TriggerDiggerJobs
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/controllers.UpdateCheckRunForBatch
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/controllers.UpdateCheckRunForJob
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/controllers.handlePullRequestEvent
+         0     0%   100%       40ms  7.27%  github.com/diggerhq/digger/backend/logging.(*SentryHandler).Handle
+         0     0%   100%       40ms  7.27%  github.com/diggerhq/digger/backend/logging.(*contextAwareHandler).Handle
+         0     0%   100%       70ms 12.73%  github.com/diggerhq/digger/backend/logging.Middleware.func1
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/middleware.AccessLevel.func1
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/middleware.HttpBasicApiAuth.func1
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/models.(*Database).AllImpactedProjectApplied
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/models.(*Database).CreateDiggerBatch
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/models.(*Database).GetDiggerBatch
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/models.(*Database).GetDiggerJobsForBatch
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/models.(*Database).GetGithubAppInstallationByIdAndRepo
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/models.(*Database).GetImpactedProjects
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/models.(*Database).UpdateDiggerJob
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/services.ScheduleJob
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/services.TriggerJob
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/utils.ConvertJobsToDiggerJobs
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/utils.GetGithubClient
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/utils.GetGithubService
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/backend/utils.GetPrServiceFromBatch
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/utils.UpdatePRComment
+         0     0%   100%       20ms  3.64%  github.com/diggerhq/digger/backend/utils.UpdatePRCommentRealtime
+         0     0%   100%       10ms  1.82%  github.com/diggerhq/digger/libs/ci/github.GithubService.UpdateCheckRun
+         0     0%   100%       60ms 10.91%  github.com/getsentry/sentry-go/gin.(*handler).handle
+         0     0%   100%       70ms 12.73%  github.com/gin-contrib/sessions.Sessions.func1
+         0     0%   100%       70ms 12.73%  github.com/gin-gonic/gin.(*Context).Next (partial-inline)
+         0     0%   100%       10ms  1.82%  github.com/gin-gonic/gin.(*Context).Set
+         0     0%   100%       70ms 12.73%  github.com/gin-gonic/gin.(*Engine).ServeHTTP
+         0     0%   100%       70ms 12.73%  github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+         0     0%   100%       70ms 12.73%  github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+         0     0%   100%       70ms 12.73%  github.com/gin-gonic/gin.LoggerWithConfig.func1
+         0     0%   100%       10ms  1.82%  github.com/google/go-github/v61/github.(*ChecksService).UpdateCheckRun
+         0     0%   100%       10ms  1.82%  github.com/google/go-github/v61/github.(*Client).NewRequest
+         0     0%   100%       10ms  1.82%  github.com/google/go-github/v61/github.(*Event).ParsePayload
+         0     0%   100%       10ms  1.82%  github.com/google/go-github/v61/github.ParseWebHook
+         0     0%   100%       10ms  1.82%  github.com/jackc/pgx/v5.(*Conn).Prepare
+         0     0%   100%       50ms  9.09%  github.com/jackc/pgx/v5.(*Conn).Query
+         0     0%   100%       20ms  3.64%  github.com/jackc/pgx/v5.(*Conn).getStatementDescription
+         0     0%   100%       10ms  1.82%  github.com/jackc/pgx/v5/internal/stmtcache.(*LRUCache).Get
+         0     0%   100%       10ms  1.82%  github.com/jackc/pgx/v5/pgconn.(*PgConn).Exec
+         0     0%   100%       30ms  5.45%  github.com/jackc/pgx/v5/pgconn.(*PgConn).ExecPrepared
+         0     0%   100%       10ms  1.82%  github.com/jackc/pgx/v5/pgconn.(*PgConn).Ping
+         0     0%   100%       10ms  1.82%  github.com/jackc/pgx/v5/pgconn.(*PgConn).Prepare
+         0     0%   100%       10ms  1.82%  github.com/jackc/pgx/v5/pgconn.(*PgConn).enterPotentialWriteReadDeadlock (inline)
+         0     0%   100%       30ms  5.45%  github.com/jackc/pgx/v5/pgconn.(*PgConn).execExtendedSuffix
+         0     0%   100%       50ms  9.09%  github.com/jackc/pgx/v5/pgconn.(*PgConn).flushWithPotentialWriteReadDeadlock
+         0     0%   100%       40ms  7.27%  github.com/jackc/pgx/v5/pgproto3.(*Frontend).Flush
+         0     0%   100%       50ms  9.09%  github.com/jackc/pgx/v5/stdlib.(*Conn).QueryContext
+         0     0%   100%       10ms  1.82%  github.com/jackc/pgx/v5/stdlib.(*Conn).ResetSession
+         0     0%   100%       10ms  1.82%  gorm.io/gorm.(*DB).Begin
+         0     0%   100%       10ms  1.82%  gorm.io/gorm.(*DB).Create
+         0     0%   100%       40ms  7.27%  gorm.io/gorm.(*DB).Find
+         0     0%   100%       20ms  3.64%  gorm.io/gorm.(*DB).Save
+         0     0%   100%       60ms 10.91%  gorm.io/gorm.(*processor).Execute
+         0     0%   100%       10ms  1.82%  gorm.io/gorm/callbacks.BeginTransaction
+         0     0%   100%       10ms  1.82%  gorm.io/gorm/callbacks.Create.func1
+         0     0%   100%       40ms  7.27%  gorm.io/gorm/callbacks.Query
+         0     0%   100%       10ms  1.82%  internal/poll.(*FD).Close
+         0     0%   100%       80ms 14.55%  internal/poll.(*FD).Write
+         0     0%   100%       10ms  1.82%  internal/poll.(*FD).decref
+         0     0%   100%       10ms  1.82%  internal/poll.(*FD).destroy
+         0     0%   100%       10ms  1.82%  internal/poll.(*SysFile).destroy (inline)
+         0     0%   100%       80ms 14.55%  internal/poll.ignoringEINTRIO (inline)
+         0     0%   100%       10ms  1.82%  internal/runtime/atomic.(*Pointer[go.shape.struct { runtime.spanSetBlockHeader2; runtime.spans [512]runtime.atomicMSpanPointer }]).Load (inline)
+         0     0%   100%       10ms  1.82%  internal/runtime/maps.NewEmptyMap (inline)
+         0     0%   100%       40ms  7.27%  log/slog.(*JSONHandler).Handle
+         0     0%   100%       40ms  7.27%  log/slog.(*Logger).log
+         0     0%   100%       40ms  7.27%  log/slog.(*commonHandler).handle
+         0     0%   100%       40ms  7.27%  log/slog.Info (inline)
+         0     0%   100%       10ms  1.82%  net.(*conn).Close
+         0     0%   100%       40ms  7.27%  net.(*conn).Write
+         0     0%   100%       10ms  1.82%  net.(*netFD).Close
+         0     0%   100%       40ms  7.27%  net.(*netFD).Write
+         0     0%   100%       10ms  1.82%  net/http.(*conn).close
+         0     0%   100%       80ms 14.55%  net/http.(*conn).serve
+         0     0%   100%       10ms  1.82%  net/http.(*conn).serve.func1
+         0     0%   100%       70ms 12.73%  net/http.serverHandler.ServeHTTP
+         0     0%   100%       40ms  7.27%  os.(*File).Write
+         0     0%   100%       40ms  7.27%  os.(*File).write (inline)
+         0     0%   100%       10ms  1.82%  reflect.(*rtype).ptrTo
+         0     0%   100%       10ms  1.82%  reflect.New
+         0     0%   100%       10ms  1.82%  reflect.ptrTo (inline)
+         0     0%   100%       10ms  1.82%  runtime.(*inlineUnwinder).resolveInternal (inline)
+         0     0%   100%       20ms  3.64%  runtime.(*mheap).alloc.func1
+         0     0%   100%       20ms  3.64%  runtime.(*mheap).allocSpan
+         0     0%   100%       10ms  1.82%  runtime.(*spanQueue).drain
+         0     0%   100%       10ms  1.82%  runtime.(*spanQueue).put
+         0     0%   100%       10ms  1.82%  runtime.(*spanSet).reset
+         0     0%   100%       10ms  1.82%  runtime.(*timer).maybeAdd
+         0     0%   100%       10ms  1.82%  runtime.(*timer).modify
+         0     0%   100%       10ms  1.82%  runtime.(*timer).reset (inline)
+         0     0%   100%       10ms  1.82%  runtime.(*timer).unlockAndRun
+         0     0%   100%       10ms  1.82%  runtime.(*timers).check
+         0     0%   100%       10ms  1.82%  runtime.(*timers).run
+         0     0%   100%      120ms 21.82%  runtime.(*traceAdvancerState).start.func1
+         0     0%   100%       30ms  5.45%  runtime.(*traceMap).put
+         0     0%   100%       20ms  3.64%  runtime.(*traceMap).reset
+         0     0%   100%       20ms  3.64%  runtime.(*traceRegionAlloc).drop
+         0     0%   100%      110ms 20.00%  runtime.(*traceStackTable).dump
+         0     0%   100%       30ms  5.45%  runtime.(*traceStringTable).put
+         0     0%   100%       10ms  1.82%  runtime.(*wakeableSleep).wake
+         0     0%   100%       10ms  1.82%  runtime.chansend
+         0     0%   100%       90ms 16.36%  runtime.dumpStacksRec
+         0     0%   100%      200ms 36.36%  runtime.findRunnable
+         0     0%   100%       10ms  1.82%  runtime.findfunc
+         0     0%   100%       10ms  1.82%  runtime.finishsweep_m
+         0     0%   100%       10ms  1.82%  runtime.forEachGRace
+         0     0%   100%       10ms  1.82%  runtime.funcline1
+         0     0%   100%       20ms  3.64%  runtime.gcBgMarkWorker
+         0     0%   100%       20ms  3.64%  runtime.gcBgMarkWorker.func2
+         0     0%   100%       20ms  3.64%  runtime.gcDrain
+         0     0%   100%       20ms  3.64%  runtime.gcDrainMarkWorkerIdle (inline)
+         0     0%   100%       10ms  1.82%  runtime.gcStart
+         0     0%   100%       10ms  1.82%  runtime.gcStart.func3
+         0     0%   100%       10ms  1.82%  runtime.goexit0
+         0     0%   100%       10ms  1.82%  runtime.goready (inline)
+         0     0%   100%       10ms  1.82%  runtime.growslice
+         0     0%   100%       80ms 14.55%  runtime.mPark (inline)
+         0     0%   100%       10ms  1.82%  runtime.mProf_Malloc
+         0     0%   100%       30ms  5.45%  runtime.makeTraceFrame
+         0     0%   100%       60ms 10.91%  runtime.makeTraceFrames
+         0     0%   100%       10ms  1.82%  runtime.makemap_small
+         0     0%   100%       10ms  1.82%  runtime.makeslice
+         0     0%   100%       30ms  5.45%  runtime.mallocgc
+         0     0%   100%       10ms  1.82%  runtime.mallocgcSmallNoscan
+         0     0%   100%       10ms  1.82%  runtime.mallocgcSmallScanHeader
+         0     0%   100%       10ms  1.82%  runtime.mallocgcSmallScanNoHeaderSC5
+         0     0%   100%       10ms  1.82%  runtime.mapaccess2_faststr
+         0     0%   100%      230ms 41.82%  runtime.mcall
+         0     0%   100%      100ms 18.18%  runtime.netpoll
+         0     0%   100%       10ms  1.82%  runtime.newInlineUnwinder
+         0     0%   100%       10ms  1.82%  runtime.newWakeableSleep.func1
+         0     0%   100%       10ms  1.82%  runtime.newobject
+         0     0%   100%       20ms  3.64%  runtime.newproc.func1
+         0     0%   100%       80ms 14.55%  runtime.notesleep
+         0     0%   100%       70ms 12.73%  runtime.notewakeup
+         0     0%   100%      220ms 40.00%  runtime.park_m
+         0     0%   100%       10ms  1.82%  runtime.pcdatavalue1
+         0     0%   100%       20ms  3.64%  runtime.pcvalue
+         0     0%   100%       10ms  1.82%  runtime.profilealloc
+         0     0%   100%       10ms  1.82%  runtime.ready
+         0     0%   100%       30ms  5.45%  runtime.resetspinning
+         0     0%   100%       10ms  1.82%  runtime.runqsteal
+         0     0%   100%       20ms  3.64%  runtime.scanObjectsSmall
+         0     0%   100%       20ms  3.64%  runtime.scanSpan
+         0     0%   100%      230ms 41.82%  runtime.schedule
+         0     0%   100%       10ms  1.82%  runtime.selectnbsend
+         0     0%   100%       80ms 14.55%  runtime.semasleep
+         0     0%   100%       70ms 12.73%  runtime.semawakeup
+         0     0%   100%       10ms  1.82%  runtime.send
+         0     0%   100%       70ms 12.73%  runtime.startm
+         0     0%   100%       10ms  1.82%  runtime.stealWork
+         0     0%   100%       10ms  1.82%  runtime.stkbucket
+         0     0%   100%       80ms 14.55%  runtime.stopm
+         0     0%   100%       20ms  3.64%  runtime.sysFree
+         0     0%   100%       20ms  3.64%  runtime.sysFreeOS (inline)
+         0     0%   100%       20ms  3.64%  runtime.sysUsed (inline)
+         0     0%   100%       20ms  3.64%  runtime.sysUsedOS (inline)
+         0     0%   100%       70ms 12.73%  runtime.systemstack
+         0     0%   100%      120ms 21.82%  runtime.traceAdvance
+         0     0%   100%       10ms  1.82%  runtime.traceAdvance.func1
+         0     0%   100%       10ms  1.82%  runtime.wakeNetPoller
+         0     0%   100%       70ms 12.73%  runtime.wakep
+         0     0%   100%       10ms  1.82%  sync.(*Map).Load (inline)
+         0     0%   100%       10ms  1.82%  syscall.Close
+         0     0%   100%       80ms 14.55%  syscall.Write (inline)
+         0     0%   100%       90ms 16.36%  syscall.syscall
+         0     0%   100%       90ms 16.36%  syscall.syscalln
+         0     0%   100%       80ms 14.55%  syscall.write
+         0     0%   100%       10ms  1.82%  time.(*Timer).Reset
+         0     0%   100%       10ms  1.82%  time.resetTimer
