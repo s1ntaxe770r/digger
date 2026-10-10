@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="300" viewBox="0 0 1080 300">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" fill="#17212b">
+<text x="20" y="25" font-size="18">Synthetic summary rendering — no GitHub or database calls</text>
+<text x="20" y="48" font-size="12">Medians with observed min/max; each panel has its own millisecond scale</text>
+<text x="20" y="90" font-size="15">10 jobs</text>
+<text x="20" y="112" font-size="12">Before: 0.0104 ms (n=5)</text>
+<rect x="20" y="120" width="285.31" height="22" fill="#64748b"/>
+<line x1="295.06" y1="131" x2="320.00" y2="131" stroke="black"/>
+<text x="20" y="187" font-size="12">After: 0.0096 ms (n=5)</text>
+<rect x="20" y="195" width="263.56" height="22" fill="#059669"/>
+<line x1="278.68" y1="206" x2="285.79" y2="206" stroke="black"/>
+<text x="20" y="260" font-size="12">Scale: 0 … 0.0109 ms</text>
+<text x="380" y="90" font-size="15">100 jobs</text>
+<text x="380" y="112" font-size="12">Before: 0.1127 ms (n=5)</text>
+<rect x="380" y="120" width="269.53" height="22" fill="#64748b"/>
+<line x1="647.40" y1="131" x2="680.00" y2="131" stroke="black"/>
+<text x="380" y="187" font-size="12">After: 0.0692 ms (n=5)</text>
+<rect x="380" y="195" width="165.50" height="22" fill="#059669"/>
+<line x1="542.54" y1="206" x2="550.37" y2="206" stroke="black"/>
+<text x="380" y="260" font-size="12">Scale: 0 … 0.1254 ms</text>
+<text x="740" y="90" font-size="15">1000 jobs</text>
+<text x="740" y="112" font-size="12">Before: 4.6396 ms (n=5)</text>
+<rect x="740" y="120" width="283.49" height="22" fill="#64748b"/>
+<line x1="1014.97" y1="131" x2="1040.00" y2="131" stroke="black"/>
+<text x="740" y="187" font-size="12">After: 0.6587 ms (n=5)</text>
+<rect x="740" y="195" width="40.25" height="22" fill="#059669"/>
+<line x1="779.56" y1="206" x2="781.05" y2="206" stroke="black"/>
+<text x="740" y="260" font-size="12">Scale: 0 … 4.9098 ms</text>
+<text x="20" y="288" font-size="12">Timing instrumentation disabled. Output unchanged. These results do not establish post-workflow latency.</text>
+</g></svg>

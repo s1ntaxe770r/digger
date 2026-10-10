@@ -1,0 +1,21 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/diggerhq/digger/libs/comment_utils/summary
+cpu: Apple M3 Pro
+BenchmarkSummarySynthetic/jobs_10-11         	   38002	      9523 ns/op	   31096 B/op	      95 allocs/op
+BenchmarkSummarySynthetic/jobs_10-11         	   38251	      9385 ns/op	   31094 B/op	      95 allocs/op
+BenchmarkSummarySynthetic/jobs_10-11         	   37629	      9562 ns/op	   31093 B/op	      95 allocs/op
+BenchmarkSummarySynthetic/jobs_10-11         	   37964	      9610 ns/op	   31097 B/op	      95 allocs/op
+BenchmarkSummarySynthetic/jobs_10-11         	   37114	      9643 ns/op	   31097 B/op	      95 allocs/op
+BenchmarkSummarySynthetic/jobs_100-11        	    5202	     71224 ns/op	  283747 B/op	     735 allocs/op
+BenchmarkSummarySynthetic/jobs_100-11        	    5107	     67948 ns/op	  283724 B/op	     735 allocs/op
+BenchmarkSummarySynthetic/jobs_100-11        	    5250	     69188 ns/op	  283734 B/op	     735 allocs/op
+BenchmarkSummarySynthetic/jobs_100-11        	    5053	     68960 ns/op	  283760 B/op	     735 allocs/op
+BenchmarkSummarySynthetic/jobs_100-11        	    4966	     70809 ns/op	  283746 B/op	     735 allocs/op
+BenchmarkSummarySynthetic/jobs_1000-11       	     541	    658686 ns/op	 3071983 B/op	    7064 allocs/op
+BenchmarkSummarySynthetic/jobs_1000-11       	     532	    647462 ns/op	 3071919 B/op	    7064 allocs/op
+BenchmarkSummarySynthetic/jobs_1000-11       	     506	    655333 ns/op	 3071850 B/op	    7064 allocs/op
+BenchmarkSummarySynthetic/jobs_1000-11       	     561	    671811 ns/op	 3071885 B/op	    7064 allocs/op
+BenchmarkSummarySynthetic/jobs_1000-11       	     519	    662654 ns/op	 3072006 B/op	    7064 allocs/op
+PASS
+ok  	github.com/diggerhq/digger/libs/comment_utils/summary	7.297s

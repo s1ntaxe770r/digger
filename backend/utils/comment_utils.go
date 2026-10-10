@@ -9,24 +9,31 @@ import (
 
 	"github.com/diggerhq/digger/backend/models"
 	"github.com/diggerhq/digger/libs/ci"
+	"github.com/diggerhq/digger/libs/comment_utils/latency"
 	orchestrator_scheduler "github.com/diggerhq/digger/libs/scheduler"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )
 
 // UpdatePRCommentRealtime updates the GitHub PR comment with current job statuses
-func UpdatePRCommentRealtime(gh GithubClientProvider, batch *models.DiggerBatch) error {
+func UpdatePRCommentRealtime(gh GithubClientProvider, batch *models.DiggerBatch) (resultErr error) {
+	finishTotal := latency.Start("realtime_total", "backend", "batch_id", batch.ID.String())
+	defer func() { finishTotal(resultErr) }()
 	slog.Debug("Updating PR comment with real-time job statuses", "batchId", batch.ID, "prNumber", batch.PrNumber)
 
 	// Get PR service for this batch
+	finishClient := latency.Start("client", "backend", "batch_id", batch.ID.String())
 	prService, err := GetPrServiceFromBatch(batch, gh)
+	finishClient(err)
 	if err != nil {
 		slog.Error("Error getting PR service for real-time comment update", "batchId", batch.ID, "error", err)
 		return fmt.Errorf("error getting PR service: %v", err)
 	}
 
 	// Get all jobs for this batch (initial check)
+	finishInitialJobs := latency.Start("jobs_initial", "backend", "batch_id", batch.ID.String())
 	jobs, err := models.DB.GetDiggerJobsForBatch(batch.ID)
+	finishInitialJobs(err)
 	if err != nil {
 		slog.Error("Error getting jobs for batch", "batchId", batch.ID, "error", err)
 		return fmt.Errorf("error getting jobs for batch: %v", err)
@@ -40,16 +47,20 @@ func UpdatePRCommentRealtime(gh GithubClientProvider, batch *models.DiggerBatch)
 	// Requery database immediately before generating comment to get latest job statuses and batch data
 	// This minimizes race conditions where job statuses or batch data might change between queries
 	slog.Debug("Requerying jobs and batch for latest status before comment generation", "batchId", batch.ID)
-	
+
 	// Get fresh batch data
+	finishBatchRefresh := latency.Start("batch_refresh", "backend", "batch_id", batch.ID.String())
 	freshBatch, err := models.DB.GetDiggerBatch(&batch.ID)
+	finishBatchRefresh(err)
 	if err != nil {
 		slog.Error("Error requerying batch", "batchId", batch.ID, "error", err)
 		return fmt.Errorf("error requerying batch: %v", err)
 	}
-	
+
 	// Get fresh job data
+	finishJobsRefresh := latency.Start("jobs_refresh", "backend", "batch_id", batch.ID.String())
 	freshJobs, err := models.DB.GetDiggerJobsForBatch(batch.ID)
+	finishJobsRefresh(err)
 	if err != nil {
 		slog.Error("Error requerying jobs for batch", "batchId", freshBatch.ID, "error", err)
 		return fmt.Errorf("error requerying jobs for batch: %v", err)
@@ -66,14 +77,18 @@ func UpdatePRCommentRealtime(gh GithubClientProvider, batch *models.DiggerBatch)
 	}
 
 	// Generate comment message with fresh job data
+	finishRender := latency.Start("summary_render", "backend", "batch_id", batch.ID.String())
 	message, err := GenerateRealtimeCommentMessage(freshJobs, freshBatch.BatchType)
+	finishRender(err)
 	if err != nil {
 		slog.Error("Error generating real-time comment message", "batchId", freshBatch.ID, "error", err)
 		return fmt.Errorf("error generating comment message: %v", err)
 	}
 
 	// Update or create the summary comment using fresh batch data
+	finishEdit := latency.Start("summary_edit", "backend", "batch_id", batch.ID.String())
 	commentId, err := UpdateOrCreateSummaryComment(prService, freshBatch, message)
+	finishEdit(err)
 	if err != nil {
 		slog.Error("Error updating real-time summary comment", "batchId", freshBatch.ID, "error", err)
 		return fmt.Errorf("error updating summary comment: %v", err)
@@ -97,16 +112,18 @@ func UpdatePRCommentRealtime(gh GithubClientProvider, batch *models.DiggerBatch)
 func UpdatePRComment(gh GithubClientProvider, jobId string, job *models.DiggerJob, status string) {
 	defer func() {
 		if r := recover(); r != nil {
-			slog.Error("Recovered from panic in UpdatePRComment goroutine", 
-				"jobId", jobId, 
-				"status", status, 
+			slog.Error("Recovered from panic in UpdatePRComment goroutine",
+				"jobId", jobId,
+				"status", status,
 				"error", r,
 				"stack", string(debug.Stack()),
 			)
 		}
-	}() 	
+	}()
 
+	finish := latency.Start("job_comment_update", "backend", "job_id", jobId, "batch_id", job.Batch.ID.String(), "status", status)
 	err := UpdatePRCommentRealtime(gh, job.Batch)
+	finish(err)
 	if err != nil {
 		slog.Warn("Failed to update PR comment for job",
 			"jobId", jobId,
@@ -162,8 +179,8 @@ func GenerateRealtimeCommentMessage(jobs []models.DiggerJob, batchType orchestra
 					projectDisplayName = jobSpec.ProjectName
 				}
 			} else {
-				slog.Warn("Failed to unmarshal job spec for project name", 
-					"jobId", job.DiggerJobID, 
+				slog.Warn("Failed to unmarshal job spec for project name",
+					"jobId", job.DiggerJobID,
 					"error", err)
 			}
 		}
@@ -172,14 +189,14 @@ func GenerateRealtimeCommentMessage(jobs []models.DiggerJob, batchType orchestra
 		resourcesCreated := uint(0)
 		resourcesUpdated := uint(0)
 		resourcesDeleted := uint(0)
-		
+
 		// Only access DiggerJobSummary fields if it's not nil
 		if job.DiggerJobSummary.ID != 0 {
 			resourcesCreated = job.DiggerJobSummary.ResourcesCreated
 			resourcesUpdated = job.DiggerJobSummary.ResourcesUpdated
 			resourcesDeleted = job.DiggerJobSummary.ResourcesDeleted
 		}
-		
+
 		// Match exact CLI format: |emoji **project** |<a href='workflow'>status</a> | <a href='comment'>jobType</a> | + | ~ | - |
 		message += fmt.Sprintf("|%s **%s** |<a href='%s'>%s</a> | <a href='%s'>%s</a> | %d | %d | %d|\n",
 			job.Status.ToEmoji(),

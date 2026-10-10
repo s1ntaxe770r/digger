@@ -1,0 +1,13 @@
+File: digger-summary-after.test
+Type: alloc_space
+Time: 2026-10-10 01:07:10 WAT
+Showing nodes accounting for 5697.55MB, 99.59% of 5721.29MB total
+Dropped 113 nodes (cum <= 28.61MB)
+      flat  flat%   sum%        cum   cum%
+ 4460.17MB 77.96% 77.96%  4465.69MB 78.05%  github.com/diggerhq/digger/libs/scheduler.GetJobSpecs
+  757.80MB 13.25% 91.20%   757.80MB 13.25%  strings.(*Builder).WriteString (inline)
+  273.56MB  4.78% 95.98%  5708.58MB 99.78%  github.com/diggerhq/digger/libs/comment_utils/summary.BasicCommentUpdater.UpdateComment
+  206.02MB  3.60% 99.59%   208.02MB  3.64%  fmt.Sprintf
+         0     0% 99.59%  5706.80MB 99.75%  github.com/diggerhq/digger/libs/comment_utils/summary.BenchmarkSummarySynthetic.func2
+         0     0% 99.59%  5702.90MB 99.68%  testing.(*B).launch
+         0     0% 99.59%  5706.80MB 99.75%  testing.(*B).runN

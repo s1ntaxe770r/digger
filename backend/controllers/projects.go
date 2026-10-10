@@ -19,6 +19,7 @@ import (
 	"github.com/diggerhq/digger/backend/segment"
 	"github.com/diggerhq/digger/backend/services"
 	"github.com/diggerhq/digger/backend/utils"
+	"github.com/diggerhq/digger/libs/comment_utils/latency"
 	"github.com/diggerhq/digger/libs/comment_utils/reporting"
 	"github.com/diggerhq/digger/libs/digger_config"
 	"github.com/diggerhq/digger/libs/iac_utils"
@@ -627,6 +628,14 @@ type SetJobStatusRequest struct {
 }
 
 func (d DiggerController) SetJobStatusForProject(c *gin.Context) {
+	finishRequest := latency.Start("status_request", "backend", "job_id", c.Param("jobId"))
+	defer func() {
+		var timingErr error
+		if c.Writer.Status() >= 400 {
+			timingErr = fmt.Errorf("HTTP %d", c.Writer.Status())
+		}
+		finishRequest(timingErr)
+	}()
 	jobId := c.Param("jobId")
 	orgId, exists := c.Get(middleware.ORGANISATION_ID_KEY)
 
@@ -1121,7 +1130,6 @@ func (d DiggerController) SetJobStatusForProject(c *gin.Context) {
 			slog.Debug("Successfully updated GitHub Check Run for job", "jobId", jobId)
 		}
 	}()
-
 
 	if batch.ReportTerraformOutputs {
 		slog.Info("Generating Terraform outputs summary", "batchId", batch.ID)

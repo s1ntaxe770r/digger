@@ -11,6 +11,7 @@ import (
 	"github.com/diggerhq/digger/libs/ci"
 	"github.com/diggerhq/digger/libs/ci/generic"
 	"github.com/diggerhq/digger/libs/comment_utils"
+	"github.com/diggerhq/digger/libs/comment_utils/latency"
 	"github.com/diggerhq/digger/libs/scheduler"
 
 	"github.com/diggerhq/digger/libs/digger_config"
@@ -287,7 +288,9 @@ func (svc GithubService) GetApprovals(prNumber int) ([]string, error) {
 	return approvals, nil
 }
 
-func (svc GithubService) EditComment(prNumber int, id string, comment string) error {
+func (svc GithubService) EditComment(prNumber int, id string, comment string) (resultErr error) {
+	finish := latency.Start("github_edit_comment", "github_client", "comment_id", id, "repo", svc.Owner+"/"+svc.RepoName, "pr_number", prNumber)
+	defer func() { finish(resultErr) }()
 	commentId, err := strconv.ParseInt(id, 10, 64)
 	if err != nil {
 		return fmt.Errorf("could not convert id %v to i64: %v", id, err)

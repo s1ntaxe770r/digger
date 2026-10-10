@@ -1,0 +1,23 @@
+File: digger-summary-after.test
+Type: cpu
+Time: 2026-10-10 01:07:09 WAT
+Duration: 1.41s, Total samples = 2.84s (202.07%)
+Showing nodes accounting for 2.57s, 90.49% of 2.84s total
+Dropped 39 nodes (cum <= 0.01s)
+Showing top 15 nodes out of 101
+      flat  flat%   sum%        cum   cum%
+     0.56s 19.72% 19.72%      0.56s 19.72%  runtime.pthread_cond_wait
+     0.54s 19.01% 38.73%      0.54s 19.01%  runtime.kevent
+     0.42s 14.79% 53.52%      0.42s 14.79%  runtime.madvise
+     0.28s  9.86% 63.38%      0.28s  9.86%  runtime.pthread_cond_signal
+     0.22s  7.75% 71.13%      0.22s  7.75%  runtime.pthread_kill
+     0.18s  6.34% 77.46%      0.18s  6.34%  runtime.usleep
+     0.11s  3.87% 81.34%      0.12s  4.23%  runtime.tryDeferToSpanScan
+     0.07s  2.46% 83.80%      0.07s  2.46%  runtime.typePointers.next
+     0.04s  1.41% 85.21%      0.04s  1.41%  runtime.memclrNoHeapPointers
+     0.03s  1.06% 86.27%      0.04s  1.41%  runtime.findObject
+     0.03s  1.06% 87.32%      0.20s  7.04%  runtime.scanObject
+     0.03s  1.06% 88.38%      0.06s  2.11%  runtime.wbBufFlush1
+     0.02s   0.7% 89.08%      0.02s   0.7%  internal/runtime/atomic.(*UnsafePointer).Load
+     0.02s   0.7% 89.79%      0.02s   0.7%  runtime.(*mspan).typePointersOfUnchecked
+     0.02s   0.7% 90.49%      0.02s   0.7%  runtime.(*wbBuf).get1

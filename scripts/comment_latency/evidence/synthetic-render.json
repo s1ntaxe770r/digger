@@ -1,0 +1,168 @@
+{
+  "before": {
+    "10": [
+      {
+        "ms": 0.009979,
+        "bytes": 34599,
+        "allocations": 101
+      },
+      {
+        "ms": 0.010394,
+        "bytes": 34596,
+        "allocations": 101
+      },
+      {
+        "ms": 0.010884,
+        "bytes": 34597,
+        "allocations": 101
+      },
+      {
+        "ms": 0.010351,
+        "bytes": 34601,
+        "allocations": 101
+      },
+      {
+        "ms": 0.010113,
+        "bytes": 34597,
+        "allocations": 101
+      }
+    ],
+    "100": [
+      {
+        "ms": 0.114492,
+        "bytes": 779647,
+        "allocations": 827
+      },
+      {
+        "ms": 0.112676,
+        "bytes": 779647,
+        "allocations": 827
+      },
+      {
+        "ms": 0.111784,
+        "bytes": 779629,
+        "allocations": 827
+      },
+      {
+        "ms": 0.112277,
+        "bytes": 779594,
+        "allocations": 827
+      },
+      {
+        "ms": 0.125414,
+        "bytes": 779635,
+        "allocations": 827
+      }
+    ],
+    "1000": [
+      {
+        "ms": 4.525027,
+        "bytes": 54869059,
+        "allocations": 8153
+      },
+      {
+        "ms": 4.500179,
+        "bytes": 54868752,
+        "allocations": 8156
+      },
+      {
+        "ms": 4.639622,
+        "bytes": 54868683,
+        "allocations": 8148
+      },
+      {
+        "ms": 4.75577,
+        "bytes": 54868610,
+        "allocations": 8150
+      },
+      {
+        "ms": 4.90983,
+        "bytes": 54869518,
+        "allocations": 8152
+      }
+    ]
+  },
+  "after": {
+    "10": [
+      {
+        "ms": 0.009523,
+        "bytes": 31096,
+        "allocations": 95
+      },
+      {
+        "ms": 0.009385,
+        "bytes": 31094,
+        "allocations": 95
+      },
+      {
+        "ms": 0.009562,
+        "bytes": 31093,
+        "allocations": 95
+      },
+      {
+        "ms": 0.00961,
+        "bytes": 31097,
+        "allocations": 95
+      },
+      {
+        "ms": 0.009643,
+        "bytes": 31097,
+        "allocations": 95
+      }
+    ],
+    "100": [
+      {
+        "ms": 0.071224,
+        "bytes": 283747,
+        "allocations": 735
+      },
+      {
+        "ms": 0.067948,
+        "bytes": 283724,
+        "allocations": 735
+      },
+      {
+        "ms": 0.069188,
+        "bytes": 283734,
+        "allocations": 735
+      },
+      {
+        "ms": 0.06896,
+        "bytes": 283760,
+        "allocations": 735
+      },
+      {
+        "ms": 0.070809,
+        "bytes": 283746,
+        "allocations": 735
+      }
+    ],
+    "1000": [
+      {
+        "ms": 0.658686,
+        "bytes": 3071983,
+        "allocations": 7064
+      },
+      {
+        "ms": 0.647462,
+        "bytes": 3071919,
+        "allocations": 7064
+      },
+      {
+        "ms": 0.655333,
+        "bytes": 3071850,
+        "allocations": 7064
+      },
+      {
+        "ms": 0.671811,
+        "bytes": 3071885,
+        "allocations": 7064
+      },
+      {
+        "ms": 0.662654,
+        "bytes": 3072006,
+        "allocations": 7064
+      }
+    ]
+  }
+}

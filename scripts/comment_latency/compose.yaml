@@ -1,0 +1,43 @@
+name: digger-comment-latency
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "127.0.0.1:55433:5432"
+    environment:
+      POSTGRES_USER: digger
+      POSTGRES_PASSWORD: local-profile-only
+      POSTGRES_DB: digger
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U digger -d digger]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - profile-db:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ../..
+      dockerfile: Dockerfile_backend
+      args:
+        COMMIT_SHA: ${DIGGER_PROFILE_REVISION:?Set DIGGER_PROFILE_REVISION to the tested commit}
+    labels:
+      org.opencontainers.image.revision: ${DIGGER_PROFILE_REVISION}
+    env_file: backend.env
+    environment:
+      DATABASE_URL: postgres://digger:local-profile-only@postgres:5432/digger?sslmode=disable
+      PORT: "3000"
+      DIGGER_COMMENT_TIMING: "1"
+      DIGGER_PPROF_DEBUG_ENABLED: "1"
+      DIGGER_LOG_LEVEL: INFO
+      HTTP_BASIC_AUTH: "true"
+    ports:
+      - "127.0.0.1:3101:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  profile-db:

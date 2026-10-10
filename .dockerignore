@@ -66,3 +66,7 @@ libs/orchestrator/**/.idea
 ui/node_modules
 ui/dist
 ui/.next
+
+# Local latency investigation credentials and generated artifacts
+scripts/comment_latency/backend.env
+scripts/comment_latency/results

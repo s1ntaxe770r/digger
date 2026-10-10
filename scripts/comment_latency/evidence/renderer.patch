@@ -1,0 +1,47 @@
+--- a/libs/comment_utils/summary/updater.go
++++ b/libs/comment_utils/summary/updater.go
+@@ -3,6 +3,7 @@
+ import (
+ 	"fmt"
+ 	"log/slog"
++	"strings"
+ 
+ 	"github.com/diggerhq/digger/libs/ci"
+ 	"github.com/diggerhq/digger/libs/comment_utils/latency"
+@@ -43,9 +44,9 @@
+ 		"jobCount", len(jobs),
+ 		"jobType", jobType)
+ 
+-	message := ""
+-	message = message + fmt.Sprintf("| Project | Status | %v | + | ~ | - |\n", jobTypeTitle)
+-	message = message + fmt.Sprintf("|---------|--------|------|---|---|---|\n")
++	var body strings.Builder
++	body.WriteString(fmt.Sprintf("| Project | Status | %v | + | ~ | - |\n", jobTypeTitle))
++	body.WriteString("|---------|--------|------|---|---|---|\n")
+ 
+ 	for _, job := range jobs {
+ 		prCommentUrl := job.PRCommentUrl
+@@ -56,7 +57,7 @@
+ 			workflowUrl = *job.WorkflowRunUrl
+ 		}
+ 
+-		message = message + fmt.Sprintf("|%v **%v** |<a href='%v'>%v</a> | <a href='%v'>%v</a> | %v | %v | %v|\n",
++		body.WriteString(fmt.Sprintf("|%v **%v** |<a href='%v'>%v</a> | <a href='%v'>%v</a> | %v | %v | %v|\n",
+ 			job.Status.ToEmoji(),
+ 			scheduler.GetProjectAlias(job),
+ 			workflowUrl,
+@@ -65,10 +66,12 @@
+ 			jobTypeTitle,
+ 			job.ResourcesCreated,
+ 			job.ResourcesUpdated,
+-			job.ResourcesDeleted)
++			job.ResourcesDeleted))
+ 	}
+ 
+-	message = message + "\n" + formatExampleCommands()
++	body.WriteString("\n")
++	body.WriteString(formatExampleCommands())
++	message := body.String()
+ 
+ 	const GithubCommentMaxLength = 65536
+ 	if len(message) > GithubCommentMaxLength {

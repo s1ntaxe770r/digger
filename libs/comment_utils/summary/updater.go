@@ -3,8 +3,10 @@ package comment_updater
 import (
 	"fmt"
 	"log/slog"
+	"strings"
 
 	"github.com/diggerhq/digger/libs/ci"
+	"github.com/diggerhq/digger/libs/comment_utils/latency"
 	"github.com/diggerhq/digger/libs/scheduler"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
@@ -18,13 +20,16 @@ type BasicCommentUpdater struct {
 }
 
 func (b BasicCommentUpdater) UpdateComment(jobs []scheduler.SerializedJob, prNumber int, prService ci.PullRequestService, prCommentId string) error {
+	finishRender := latency.Start("summary_render", "cli", "comment_id", prCommentId, "pr_number", prNumber, "job_count", len(jobs))
 	jobSpecs, err := scheduler.GetJobSpecs(jobs)
 	if err != nil {
+		finishRender(err)
 		slog.Error("could not get jobspecs", "error", err, "jobCount", len(jobs))
 		return err
 	}
 
 	if len(jobSpecs) == 0 {
+		finishRender(nil)
 		slog.Warn("no job specs found, cannot update comment", "jobCount", len(jobs))
 		return nil
 	}
@@ -39,9 +44,9 @@ func (b BasicCommentUpdater) UpdateComment(jobs []scheduler.SerializedJob, prNum
 		"jobCount", len(jobs),
 		"jobType", jobType)
 
-	message := ""
-	message = message + fmt.Sprintf("| Project | Status | %v | + | ~ | - |\n", jobTypeTitle)
-	message = message + fmt.Sprintf("|---------|--------|------|---|---|---|\n")
+	var body strings.Builder
+	body.WriteString(fmt.Sprintf("| Project | Status | %v | + | ~ | - |\n", jobTypeTitle))
+	body.WriteString("|---------|--------|------|---|---|---|\n")
 
 	for _, job := range jobs {
 		prCommentUrl := job.PRCommentUrl
@@ -52,7 +57,7 @@ func (b BasicCommentUpdater) UpdateComment(jobs []scheduler.SerializedJob, prNum
 			workflowUrl = *job.WorkflowRunUrl
 		}
 
-		message = message + fmt.Sprintf("|%v **%v** |<a href='%v'>%v</a> | <a href='%v'>%v</a> | %v | %v | %v|\n",
+		body.WriteString(fmt.Sprintf("|%v **%v** |<a href='%v'>%v</a> | <a href='%v'>%v</a> | %v | %v | %v|\n",
 			job.Status.ToEmoji(),
 			scheduler.GetProjectAlias(job),
 			workflowUrl,
@@ -61,10 +66,12 @@ func (b BasicCommentUpdater) UpdateComment(jobs []scheduler.SerializedJob, prNum
 			jobTypeTitle,
 			job.ResourcesCreated,
 			job.ResourcesUpdated,
-			job.ResourcesDeleted)
+			job.ResourcesDeleted))
 	}
 
-	message = message + "\n" + formatExampleCommands()
+	body.WriteString("\n")
+	body.WriteString(formatExampleCommands())
+	message := body.String()
 
 	const GithubCommentMaxLength = 65536
 	if len(message) > GithubCommentMaxLength {
@@ -80,7 +87,10 @@ func (b BasicCommentUpdater) UpdateComment(jobs []scheduler.SerializedJob, prNum
 		slog.Debug("trimmed message", "newLength", len(message))
 	}
 
+	finishRender(nil)
+	finishEdit := latency.Start("summary_edit", "cli", "comment_id", prCommentId, "pr_number", prNumber)
 	err = prService.EditComment(prNumber, prCommentId, message)
+	finishEdit(err)
 	if err != nil {
 		slog.Warn("failed to update summary comment",
 			"error", err,

@@ -1,0 +1,23 @@
+File: digger-summary-before.test
+Type: cpu
+Time: 2026-10-10 01:06:08 WAT
+Duration: 1.80s, Total samples = 4.76s (263.96%)
+Showing nodes accounting for 4.25s, 89.29% of 4.76s total
+Dropped 82 nodes (cum <= 0.02s)
+Showing top 15 nodes out of 106
+      flat  flat%   sum%        cum   cum%
+     1.19s 25.00% 25.00%      1.19s 25.00%  runtime.pthread_cond_wait
+     0.51s 10.71% 35.71%      0.51s 10.71%  runtime.pthread_cond_signal
+     0.47s  9.87% 45.59%      0.47s  9.87%  runtime.madvise
+     0.38s  7.98% 53.57%      0.38s  7.98%  runtime.pthread_kill
+     0.36s  7.56% 61.13%      0.36s  7.56%  runtime.kevent
+     0.22s  4.62% 65.76%      0.58s 12.18%  runtime.scanObject
+     0.22s  4.62% 70.38%      0.32s  6.72%  runtime.scanObjectsSmall
+     0.21s  4.41% 74.79%      0.21s  4.41%  runtime.usleep
+     0.15s  3.15% 77.94%      0.15s  3.15%  runtime.memmove
+     0.13s  2.73% 80.67%      0.16s  3.36%  runtime.tryDeferToSpanScan
+     0.13s  2.73% 83.40%      0.13s  2.73%  runtime.typePointers.next
+     0.12s  2.52% 85.92%      0.14s  2.94%  runtime.scanblock
+     0.10s  2.10% 88.03%      0.11s  2.31%  runtime.findObject
+     0.03s  0.63% 88.66%      0.03s  0.63%  runtime.extractHeapBitsSmall
+     0.03s  0.63% 89.29%      0.03s  0.63%  runtime.spanSetScans
